@@ -6,11 +6,11 @@ import java.util.Objects;
  *
  * @author Tajra Selimovic
  */
-public class Reservations {
+public class Reservation {
     private int reservation_id;
     private int price;
-    private Users u;
-    private Trains t;
+    private User u;
+    private Train t;
 
     public int getReservation_id() {
         return reservation_id;
@@ -28,19 +28,19 @@ public class Reservations {
         this.price = price;
     }
 
-    public Users getU() {
+    public User getU() {
         return u;
     }
 
-    public void setU(Users u) {
+    public void setU(User u) {
         this.u = u;
     }
 
-    public Trains getT() {
+    public Train getT() {
         return t;
     }
 
-    public void setT(Trains t) {
+    public void setT(Train t) {
         this.t = t;
     }
 
@@ -58,7 +58,7 @@ public class Reservations {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Reservations that = (Reservations) o;
+        Reservation that = (Reservation) o;
         return reservation_id == that.reservation_id;
     }
 

@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author Tajra Selimovic
  */
-public class Trains {
+public class Train {
     private int train_id;
     private String route;
     private Timestamp departure;
@@ -59,7 +59,7 @@ public class Trains {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Trains trains = (Trains) o;
+        Train trains = (Train) o;
         return train_id == trains.train_id;
     }
 

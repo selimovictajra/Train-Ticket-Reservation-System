@@ -6,7 +6,7 @@ import java.util.Objects;
  *
  * @author Tajra Selimovic
  */
-public class Users {
+public class User {
     private int user_id;
     private String name;
     private boolean role;
@@ -68,7 +68,7 @@ public class Users {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Users u = (Users) o;
+        User u = (User) o;
         return user_id == u.user_id;
     }
 
