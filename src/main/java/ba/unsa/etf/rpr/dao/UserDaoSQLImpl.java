@@ -23,6 +23,12 @@ public class UserDaoSQLImpl implements UserDao{
             e.printStackTrace();
         }
     }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+
     @Override
     public User getById(int id) {
         String query = "SELECT * FROM Users WHERE user_id = ?";
