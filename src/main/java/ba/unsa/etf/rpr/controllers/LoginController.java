@@ -3,16 +3,21 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -51,6 +56,20 @@ public class LoginController {
         }
         catch(SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void registerButtonOnAction(ActionEvent ae) throws Exception {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/register.fxml")));
+            Stage registerStage = new Stage();
+            registerStage.initStyle(StageStyle.UNDECORATED);
+            registerStage.setScene(new Scene(root, 600, 536));
+            registerStage.show();
+        }
+        catch(Exception exception) {
+            exception.printStackTrace();
+            exception.getCause();
         }
     }
 }
