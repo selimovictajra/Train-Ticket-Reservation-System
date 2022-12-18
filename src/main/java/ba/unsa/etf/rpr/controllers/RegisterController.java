@@ -40,4 +40,57 @@ public class RegisterController {
         Platform.exit();
     }
 
+    public void registerButtonOnAction(ActionEvent ae) {
+        if (fullnameTextFiled.getText().isEmpty() || usernameTextField.getText().isEmpty() ||
+                passwordField.getText().isEmpty() || conpassField.getText().isEmpty()) {
+            messageLabel1.setText("Please fill the empty fields.");
+            messageLabel2.setText("");
+            messageLabel3.setText("");
+        }
+        else if (!(passwordField.getText().equals(conpassField.getText()))) {
+            messageLabel3.setText("Password does not match.");
+            messageLabel1.setText("");
+            messageLabel2.setText("");
+        }
+        else {
+            String query = "SELECT count(user_id) FROM Users WHERE username = '" + usernameTextField.getText() + "'";
+            boolean isusr = false;
+            try {
+                UserDaoSQLImpl user = new UserDaoSQLImpl();
+                PreparedStatement ps = user.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                ResultSet rs = ps.executeQuery();
+                while(rs.next()) {
+                    if (rs.getInt(1) == 0) {
+                        isusr = true;
+                        System.out.println(rs.getInt(1));
+                    }
+                    else isusr = false;
+                }
+                rs.close();
+            }
+            catch(SQLException e) {
+                e.printStackTrace();
+            }
+            if (isusr) {
+                messageLabel4.setText("Username already exists. Please try with another one.");
+                messageLabel1.setText("");
+                messageLabel2.setText("");
+                messageLabel3.setText("");
+            }
+            else {
+                User user = new User();
+                user.setName(fullnameTextFiled.getText());
+                user.setUsername(usernameTextField.getText());
+                user.setPassword(passwordField.getText());
+                user.setRole(false);
+                UserDaoSQLImpl userd = new UserDaoSQLImpl();
+                userd.add(user);
+                messageLabel1.setText("");
+                messageLabel2.setText("You have been registered successfully!");
+                messageLabel3.setText("");
+                messageLabel4.setText("");
+            }
+        }
+    }
+
 }
