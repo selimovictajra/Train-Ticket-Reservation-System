@@ -51,11 +51,13 @@ public class RegisterController {
             messageLabel1.setText("Please fill the empty fields.");
             messageLabel2.setText("");
             messageLabel3.setText("");
+            messageLabel4.setText("");
         }
         else if (!(passwordField.getText().equals(conpassField.getText()))) {
             messageLabel3.setText("Password does not match.");
             messageLabel1.setText("");
             messageLabel2.setText("");
+            messageLabel4.setText("");
         }
         else {
             String query = "SELECT count(user_id) FROM Users WHERE username = '" + usernameTextField.getText() + "'";
