@@ -5,13 +5,18 @@ import ba.unsa.etf.rpr.domain.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.sql.*;
+import java.util.Objects;
 
 public class RegisterController {
     @FXML
@@ -90,6 +95,22 @@ public class RegisterController {
                 messageLabel3.setText("");
                 messageLabel4.setText("");
             }
+        }
+    }
+
+    public void loginButtonOnAction(ActionEvent ae) throws Exception {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
+            Stage registerStage = new Stage();
+            registerStage.initStyle(StageStyle.UNDECORATED);
+            registerStage.setScene(new Scene(root, 520, 400));
+            Stage stage = (Stage) closeButton.getScene().getWindow();
+            stage.close();
+            registerStage.show();
+        }
+        catch(Exception exception) {
+            exception.printStackTrace();
+            exception.getCause();
         }
     }
 
