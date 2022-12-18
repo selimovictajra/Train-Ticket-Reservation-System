@@ -76,7 +76,7 @@ public class RegisterController {
             catch(SQLException e) {
                 e.printStackTrace();
             }
-            if (isusr) {
+            if (!isusr) {
                 messageLabel4.setText("Username already exists. Please try with another one.");
                 messageLabel1.setText("");
                 messageLabel2.setText("");
