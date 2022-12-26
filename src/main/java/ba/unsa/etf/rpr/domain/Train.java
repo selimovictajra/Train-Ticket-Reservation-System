@@ -8,17 +8,17 @@ import java.util.Objects;
  * @author Tajra Selimovic
  */
 public class Train {
-    private int train_id;
+    private int id;
     private String route;
     private Timestamp departure;
     private int capacity;
 
     public int getTrain_id() {
-        return train_id;
+        return id;
     }
 
     public void setTrain_id(int train_id) {
-        this.train_id = train_id;
+        this.id = train_id;
     }
 
     public String getRoute() {
@@ -48,7 +48,7 @@ public class Train {
     @Override
     public String toString() {
         return "Trains{" +
-                "train_id=" + train_id +
+                "train_id=" + id +
                 ", route='" + route + '\'' +
                 ", departure=" + departure +
                 ", capacity=" + capacity +
@@ -60,11 +60,11 @@ public class Train {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Train trains = (Train) o;
-        return train_id == trains.train_id;
+        return id == trains.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(train_id, route, departure, capacity);
+        return Objects.hash(id, route, departure, capacity);
     }
 }
