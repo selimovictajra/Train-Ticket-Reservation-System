@@ -7,17 +7,17 @@ import java.util.Objects;
  * @author Tajra Selimovic
  */
 public class Reservation {
-    private int reservation_id;
+    private int id;
     private int price;
     private User u;
     private Train t;
 
     public int getReservation_id() {
-        return reservation_id;
+        return id;
     }
 
     public void setReservation_id(int reservation_id) {
-        this.reservation_id = reservation_id;
+        this.id = reservation_id;
     }
 
     public int getPrice() {
@@ -47,7 +47,7 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservations{" +
-                "reservation_id=" + reservation_id +
+                "reservation_id=" + id +
                 ", price=" + price +
                 ", u=" + u +
                 ", t=" + t +
@@ -59,11 +59,11 @@ public class Reservation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reservation that = (Reservation) o;
-        return reservation_id == that.reservation_id;
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reservation_id, price, u, t);
+        return Objects.hash(id, price, u, t);
     }
 }
