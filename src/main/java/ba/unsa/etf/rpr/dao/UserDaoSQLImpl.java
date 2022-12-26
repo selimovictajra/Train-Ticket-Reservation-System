@@ -12,7 +12,7 @@ public class UserDaoSQLImpl implements UserDao{
     Connection connection;
     public UserDaoSQLImpl(){
         try {
-            FileReader reader = new FileReader("src//main//resources//db.properties");
+            FileReader reader = new FileReader("src/main/resources/db.properties");
             Properties p = new Properties();
             p.load(reader);
             String s1=p.getProperty("user");
