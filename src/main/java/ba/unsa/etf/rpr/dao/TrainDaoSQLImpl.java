@@ -13,7 +13,7 @@ public class TrainDaoSQLImpl implements TrainDao{
     private Connection connection;
     public TrainDaoSQLImpl(){
         try {
-            FileReader reader = new FileReader("src//main//resources//db.properties");
+            FileReader reader = new FileReader("src/main/resources/db.properties");
             Properties p = new Properties();
             p.load(reader);
             String s1=p.getProperty("user");
