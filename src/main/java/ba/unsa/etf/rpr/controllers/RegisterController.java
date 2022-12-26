@@ -54,7 +54,7 @@ public class RegisterController {
             messageLabel4.setText("");
         }
         else if (!(passwordField.getText().equals(conpassField.getText()))) {
-            messageLabel3.setText("Password does not match.");
+            messageLabel3.setText("kikiriki.");
             messageLabel1.setText("");
             messageLabel2.setText("");
             messageLabel4.setText("");
