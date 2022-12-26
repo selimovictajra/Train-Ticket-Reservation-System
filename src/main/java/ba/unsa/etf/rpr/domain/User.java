@@ -7,18 +7,18 @@ import java.util.Objects;
  * @author Tajra Selimovic
  */
 public class User {
-    private int user_id;
+    private int id;
     private String name;
     private boolean role;
     private String username;
     private String password;
 
     public int getUser_id() {
-        return user_id;
+        return id;
     }
 
     public void setUser_id(int user_id) {
-        this.user_id = user_id;
+        this.id = user_id;
     }
 
     public String getName() {
@@ -56,7 +56,7 @@ public class User {
     @Override
     public String toString() {
         return "Users{" +
-                "user_id=" + user_id +
+                "user_id=" + id +
                 ", name='" + name + '\'' +
                 ", role=" + role +
                 ", username='" + username + '\'' +
@@ -69,11 +69,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User u = (User) o;
-        return user_id == u.user_id;
+        return id == u.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, name, role, username, password);
+        return Objects.hash(id, name, role, username, password);
     }
 }
