@@ -41,14 +41,20 @@ public class LoginController {
         if (passwordField.getText().isEmpty() || usernameTextField.getText().isEmpty()) {
             loginMessage.setText("Invalid login. Please try again.");
         }
-        /*else {
-            UserDaoSQLImpl u = new UserDaoSQLImpl();
-            if (u.checkUsernamePassword(usernameTextField.getText(),passwordField.getText())) {
-
+        else {
+            UserDaoSQLImpl user = new UserDaoSQLImpl();
+            if (user.checkUsernamePassword(usernameTextField.getText(),passwordField.getText())) {
+                if (user.isRole(usernameTextField.getText())) {
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/adminpanelhome.fxml")));
+                    Stage stage = (Stage)((javafx.scene.Node)ae.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
             } else {
                 loginMessage.setText("Invalid login. Please try again.");
             }
-        }*/
+        }
     }
 
     public void registerButtonOnAction(ActionEvent ae) throws Exception {
