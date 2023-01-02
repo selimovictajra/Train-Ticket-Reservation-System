@@ -37,6 +37,17 @@ public class UserDaoSQLImpl implements UserDao{
         }
     }
 
+    @Override
+    public Map<String, Object> object2row(User object) {
+        Map<String, Object> item = new TreeMap<String, Object>();
+        item.put("id", object.getId());
+        item.put("name", object.getName());
+        item.put("admin", object.isRole());
+        item.put("username", object.getUsername());
+        item.put("password", object.getPassword());
+        return item;
+    }
+
 
 
 
