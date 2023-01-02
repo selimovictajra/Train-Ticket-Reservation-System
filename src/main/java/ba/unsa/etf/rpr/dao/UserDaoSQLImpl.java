@@ -52,6 +52,21 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
         }
         return false;
     }
+    @Override
+    public boolean isRole(String usernameField) throws TrainException {
+        String insert = "SELECT username from users where role=1";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) { // result set is iterator.
+                if(rs.getString(1).equals(usernameField)) return true;
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 
 
@@ -155,11 +170,6 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException {
-        return false;
-    }
-
-    @Override
-    public boolean isAdmin(String usernameField) throws TrainException {
         return false;
     }
 }
