@@ -13,11 +13,11 @@ public class Train {
     private Timestamp departure;
     private int capacity;
 
-    public int getTrain_id() {
+    public int getId() {
         return id;
     }
 
-    public void setTrain_id(int train_id) {
+    public void setId(int train_id) {
         this.id = train_id;
     }
 
