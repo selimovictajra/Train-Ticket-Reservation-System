@@ -6,7 +6,7 @@ import java.util.Objects;
  *
  * @author Tajra Selimovic
  */
-public class Reservation {
+public class Reservation implements Idable {
     private int id;
     private int price;
     private User u;
