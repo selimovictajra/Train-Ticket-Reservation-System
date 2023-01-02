@@ -58,6 +58,8 @@ public class LoginController {
             Stage registerStage = new Stage();
             registerStage.initStyle(StageStyle.UNDECORATED);
             registerStage.setScene(new Scene(root, 600, 536));
+            Stage stage = (Stage) cancelButton.getScene().getWindow();
+            stage.close();
             registerStage.show();
         }
         catch(Exception exception) {
