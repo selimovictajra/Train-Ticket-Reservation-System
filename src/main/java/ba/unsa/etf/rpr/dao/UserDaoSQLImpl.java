@@ -39,7 +39,7 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public boolean findUsername(String usernameField) throws TrainException {
-        String insert = "SELECT count(username) from users where username='" + usernameField + "'";
+        String insert = "SELECT count(username) from Users where username='" + usernameField + "'";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stmt.executeQuery();
@@ -54,7 +54,7 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
     }
     @Override
     public boolean isRole(String usernameField) throws TrainException {
-        String insert = "SELECT username from users where role=1";
+        String insert = "SELECT username from Users where role=1";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stmt.executeQuery();
@@ -68,10 +68,27 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
         return false;
     }
 
-
-
-
     @Override
+    public boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException{
+        String insert = "SELECT count(1) from Users where username='" + usernameTextField + "' AND password='"
+                + passwordField + "'";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) { // result set is iterator.
+                return rs.getInt(1) == 1;
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+
+
+    /*@Override
     public User getById(int id) {
         String query = "SELECT * FROM Users WHERE user_id = ?";
         try{
@@ -167,9 +184,5 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
         }
         return users;
     }
-
-    @Override
-    public boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException {
-        return false;
-    }
+*/
 }
