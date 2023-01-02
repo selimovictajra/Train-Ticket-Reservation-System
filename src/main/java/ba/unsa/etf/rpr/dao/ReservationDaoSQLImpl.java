@@ -1,25 +1,27 @@
 package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Reservation;
+import ba.unsa.etf.rpr.exceptions.TrainException;
+
 import java.io.FileReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
-public class ReservationDaoSQLImpl implements ReservationDao{
-    private Connection connection;
+public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements ReservationDao{
     public ReservationDaoSQLImpl(){
-        try {
-            FileReader reader = new FileReader("src/main/resources/db.properties");
-            Properties p = new Properties();
-            p.load(reader);
-            String s1=p.getProperty("user");
-            String s2=p.getProperty("password");
-            String s3=p.getProperty("url");
-            this.connection = DriverManager.getConnection(s3,s1, s2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        super("Reservations");
+    }
+
+    @Override
+    public Reservation row2object(ResultSet rs) throws TrainException {
+        return null;
+    }
+
+    @Override
+    public Map<String, Object> object2row(Reservation object) {
+        return null;
     }
 
     @Override
