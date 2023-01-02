@@ -10,7 +10,7 @@ public class Reservation implements Idable {
     private int id;
     private int price;
     private User user;
-    private Train t;
+    private Train train;
 
     public int getId() {
         return id;
@@ -36,12 +36,12 @@ public class Reservation implements Idable {
         this.user = u;
     }
 
-    public Train getT() {
-        return t;
+    public Train getTrain() {
+        return train;
     }
 
-    public void setT(Train t) {
-        this.t = t;
+    public void setTrain(Train t) {
+        this.train = t;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Reservation implements Idable {
                 "reservation_id=" + id +
                 ", price=" + price +
                 ", u=" + user +
-                ", t=" + t +
+                ", t=" + train +
                 '}';
     }
 
@@ -64,6 +64,6 @@ public class Reservation implements Idable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price, user, t);
+        return Objects.hash(id, price, user, train);
     }
 }
