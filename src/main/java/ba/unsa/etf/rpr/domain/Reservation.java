@@ -12,11 +12,11 @@ public class Reservation {
     private User u;
     private Train t;
 
-    public int getReservation_id() {
+    public int getId() {
         return id;
     }
 
-    public void setReservation_id(int reservation_id) {
+    public void setId(int reservation_id) {
         this.id = reservation_id;
     }
 
