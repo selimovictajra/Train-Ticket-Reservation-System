@@ -35,7 +35,6 @@ public class LoginController {
     public void CancelButtonOnAction(ActionEvent ae) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
-        Platform.exit();
     }
 
     public void loginButtonOnAction(ActionEvent ae) throws TrainException, IOException {
