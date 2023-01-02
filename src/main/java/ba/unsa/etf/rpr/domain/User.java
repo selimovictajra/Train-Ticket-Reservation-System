@@ -6,7 +6,7 @@ import java.util.Objects;
  *
  * @author Tajra Selimovic
  */
-public class User {
+public class User implements Idable {
     private int id;
     private String name;
     private boolean role;
