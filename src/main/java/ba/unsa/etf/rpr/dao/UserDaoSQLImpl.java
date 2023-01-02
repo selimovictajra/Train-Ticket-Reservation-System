@@ -5,9 +5,7 @@ import ba.unsa.etf.rpr.exceptions.TrainException;
 
 import java.io.FileReader;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public class UserDaoSQLImpl implements UserDao{
     Connection connection;
@@ -28,7 +26,7 @@ public class UserDaoSQLImpl implements UserDao{
     public User row2object(ResultSet rs) throws TrainException {
         try {
             User user = new User();
-            user.setUser_id(rs.getInt("id"));
+            user.setId(rs.getInt("id"));
             user.setName(rs.getString("name"));
             user.setRole(rs.getBoolean("admin"));
             user.setUsername(rs.getString("username"));
@@ -38,6 +36,7 @@ public class UserDaoSQLImpl implements UserDao{
             throw new TrainException(e.getMessage(), e);
         }
     }
+
 
 
 
