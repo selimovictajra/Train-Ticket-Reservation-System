@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author Tajra Selimovic
  */
-public class Train {
+public class Train implements Idable {
     private int id;
     private String route;
     private Timestamp departure;
