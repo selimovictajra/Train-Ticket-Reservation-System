@@ -7,20 +7,9 @@ import java.io.FileReader;
 import java.sql.*;
 import java.util.*;
 
-public class UserDaoSQLImpl implements UserDao{
-    Connection connection;
+public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
     public UserDaoSQLImpl(){
-        try {
-            FileReader reader = new FileReader("src/main/resources/db.properties");
-            Properties p = new Properties();
-            p.load(reader);
-            String s1=p.getProperty("user");
-            String s2=p.getProperty("password");
-            String s3=p.getProperty("url");
-            this.connection = DriverManager.getConnection(s3, s1, s2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        super("Users");
     }
     @Override
     public User row2object(ResultSet rs) throws TrainException {
@@ -46,6 +35,22 @@ public class UserDaoSQLImpl implements UserDao{
         item.put("username", object.getUsername());
         item.put("password", object.getPassword());
         return item;
+    }
+
+    @Override
+    public boolean findUsername(String usernameField) throws TrainException{
+        String insert = "SELECT count(username) from users where username='" + usernameField +"'";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) { // result set is iterator.
+                return rs.getInt(1) != 0;
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 
