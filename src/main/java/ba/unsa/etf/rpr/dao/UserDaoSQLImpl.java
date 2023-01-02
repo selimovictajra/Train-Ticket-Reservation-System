@@ -25,10 +25,6 @@ public class UserDaoSQLImpl implements UserDao{
         }
     }
 
-    public Connection getConnection() {
-        return connection;
-    }
-
 
     @Override
     public User getById(int id) {
