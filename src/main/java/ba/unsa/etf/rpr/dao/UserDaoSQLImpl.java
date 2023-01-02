@@ -38,8 +38,8 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public boolean findUsername(String usernameField) throws TrainException{
-        String insert = "SELECT count(username) from users where username='" + usernameField +"'";
+    public boolean findUsername(String usernameField) throws TrainException {
+        String insert = "SELECT count(username) from users where username='" + usernameField + "'";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stmt.executeQuery();
@@ -155,11 +155,6 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException {
-        return false;
-    }
-
-    @Override
-    public boolean findUsername(String usernameField) throws TrainException {
         return false;
     }
 
