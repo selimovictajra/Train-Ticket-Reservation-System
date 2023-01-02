@@ -4,10 +4,7 @@ import ba.unsa.etf.rpr.exceptions.TrainException;
 
 import java.io.FileReader;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements ReservationDao{
     public ReservationDaoSQLImpl(){
@@ -30,7 +27,12 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
 
     @Override
     public Map<String, Object> object2row(Reservation object) {
-        return null;
+        Map<String, Object> item = new TreeMap<String, Object>();
+        item.put("id", object.getId());
+        item.put("user_id", object.getUser().getId());
+        item.put("train_id", object.getTrain().getId());
+        item.put("price", object.getPrice());
+        return item;
     }
 
    /* @Override
