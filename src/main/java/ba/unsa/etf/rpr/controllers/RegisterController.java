@@ -43,7 +43,6 @@ public class RegisterController {
     public void closeButtonOnAction(ActionEvent ae) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
-        Platform.exit();
     }
 
     public void registerButtonOnAction(ActionEvent ae) throws TrainException {
