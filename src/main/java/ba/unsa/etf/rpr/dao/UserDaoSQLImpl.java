@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.TrainException;
 
 import java.io.FileReader;
 import java.sql.*;
@@ -124,5 +125,10 @@ public class UserDaoSQLImpl implements UserDao{
             e.printStackTrace(); // poor error handling
         }
         return users;
+    }
+
+    @Override
+    public boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException {
+        return false;
     }
 }
