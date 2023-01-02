@@ -11,7 +11,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private String tableName;
 
     public AbstractDao(String tableName) {
-
+        this.tableName = tableName;
+        if(connection == null) createConnection();
     }
 
     private static void createConnection() {
