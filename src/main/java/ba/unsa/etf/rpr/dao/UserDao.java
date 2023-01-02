@@ -12,9 +12,6 @@ import java.util.Map;
  * @author Tajra Selimovic
  */
 public interface UserDao extends Dao<User> {
-    User row2object(ResultSet rs) throws TrainException;
-
-    Map<String, Object> object2row(User object);
 
     boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException;
     boolean findUsername(String usernameField) throws TrainException;
