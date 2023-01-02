@@ -6,10 +6,7 @@ import ba.unsa.etf.rpr.exceptions.TrainException;
 
 import java.io.FileReader;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 public class TrainDaoSQLImpl extends AbstractDao<Train> implements TrainDao{
     public TrainDaoSQLImpl(){
@@ -32,7 +29,12 @@ public class TrainDaoSQLImpl extends AbstractDao<Train> implements TrainDao{
 
     @Override
     public Map<String, Object> object2row(Train object) {
-        return null;
+        Map<String, Object> item = new TreeMap<>();
+        item.put("id", object.getId());
+        item.put("route", object.getRoute());
+        item.put("departure", object.getDeparture());
+        item.put("capacity", object.getCapacity());
+        return item;
     }
 
 /*
