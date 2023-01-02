@@ -16,7 +16,16 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
 
     @Override
     public Reservation row2object(ResultSet rs) throws TrainException {
-        return null;
+        try {
+            Reservation reservation = new Reservation();
+            reservation.setId(rs.getInt("id"));
+            reservation.setU(DaoFactory.userDao().getById(rs.getInt("user_id")));
+            reservation.setT(DaoFactory.trainDao().getById(rs.getInt("train_id")));
+            reservation.setPrice(rs.getInt("price"));
+            return reservation;
+        } catch (Exception e) {
+            throw new TrainException(e.getMessage(), e);
+        }
     }
 
     @Override
@@ -24,7 +33,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         return null;
     }
 
-    @Override
+   /* @Override
     public Reservation getById(int id) {
         String query = "SELECT * FROM Reservations WHERE reservation_id = ?";
         try{
@@ -118,6 +127,6 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         }
         return reservations;
 
-    }
+    }*/
 
 }
