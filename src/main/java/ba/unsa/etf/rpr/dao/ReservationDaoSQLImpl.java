@@ -19,7 +19,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         try {
             Reservation reservation = new Reservation();
             reservation.setId(rs.getInt("id"));
-            reservation.setU(DaoFactory.userDao().getById(rs.getInt("user_id")));
+            reservation.setUser(DaoFactory.userDao().getById(rs.getInt("user_id")));
             reservation.setT(DaoFactory.trainDao().getById(rs.getInt("train_id")));
             reservation.setPrice(rs.getInt("price"));
             return reservation;
