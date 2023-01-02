@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
+import ba.unsa.etf.rpr.exceptions.TrainException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,29 +38,18 @@ public class LoginController {
         Platform.exit();
     }
 
-    public void loginButtonOnAction(ActionEvent ae) {
-        if (passwordField.getText().isEmpty() && usernameTextField.getText().isEmpty()) {
+    public void loginButtonOnAction(ActionEvent ae) throws TrainException, IOException {
+        if (passwordField.getText().isEmpty() || usernameTextField.getText().isEmpty()) {
             loginMessage.setText("Invalid login. Please try again.");
         }
-        else validateLogin();
-    }
+        /*else {
+            UserDaoSQLImpl u = new UserDaoSQLImpl();
+            if (u.checkUsernamePassword(usernameTextField.getText(),passwordField.getText())) {
 
-    public void validateLogin() {
-        String str = "SELECT count(1) FROM Users WHERE username = '"
-                + usernameTextField.getText() + "' AND password = '" + passwordField.getText() + "'";
-        try {
-            UserDaoSQLImpl user = new UserDaoSQLImpl();
-            PreparedStatement ps = user.getConnection().prepareStatement(str, Statement.RETURN_GENERATED_KEYS);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
-                if (rs.getInt(1) == 1) loginMessage.setText("");
-                else loginMessage.setText("Invalid Login. Please try again.");
+            } else {
+                loginMessage.setText("Invalid login. Please try again.");
             }
-            rs.close();
-        }
-        catch(SQLException e) {
-            e.printStackTrace();
-        }
+        }*/
     }
 
     public void registerButtonOnAction(ActionEvent ae) throws Exception {
