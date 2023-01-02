@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.TrainException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,57 +46,40 @@ public class RegisterController {
         Platform.exit();
     }
 
-    public void registerButtonOnAction(ActionEvent ae) {
-        if (fullnameTextFiled.getText().isEmpty() || usernameTextField.getText().isEmpty() ||
-                passwordField.getText().isEmpty() || conpassField.getText().isEmpty()) {
+    public void registerButtonOnAction(ActionEvent ae) throws TrainException {
+        if (usernameTextField.getText().isEmpty() || passwordField.getText().isEmpty() || fullnameTextFiled.getText().isEmpty() || conpassField.getText().isEmpty()) {
             messageLabel1.setText("Please fill the empty fields.");
-            messageLabel2.setText("");
-            messageLabel3.setText("");
-            messageLabel4.setText("");
+            if(usernameTextField.getText().isEmpty()) messageLabel4.setText("");
         }
-        else if (!(passwordField.getText().equals(conpassField.getText()))) {
-            messageLabel3.setText("Password does not match.");
+        else{
             messageLabel1.setText("");
-            messageLabel2.setText("");
-            messageLabel4.setText("");
-        }
-        else {
-            String query = "SELECT count(user_id) FROM Users WHERE username = '" + usernameTextField.getText() + "'";
-            boolean isusr = false;
-            try {
-                UserDaoSQLImpl user = new UserDaoSQLImpl();
-                PreparedStatement ps = user.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-                ResultSet rs = ps.executeQuery();
-                while(rs.next()) {
-                    if (rs.getInt(1) == 0) {
-                        isusr = true;
-                        System.out.println(rs.getInt(1));
-                    }
-                    else isusr = false;
-                }
-                rs.close();
+            UserDaoSQLImpl userDaoSQL = new UserDaoSQLImpl();
+            boolean usernameFound = userDaoSQL.findUsername(usernameTextField.getText());
+            if (usernameFound) {
+                messageLabel4.setText("Username already taken.");
+            } else {
+                messageLabel4.setText("");
             }
-            catch(SQLException e) {
-                e.printStackTrace();
-            }
-            if (!isusr) {
-                messageLabel4.setText("Username already exists. Please try with another one.");
-                messageLabel1.setText("");
-                messageLabel2.setText("");
+            boolean password_ok = true;
+            if (passwordField.getText().equals(conpassField.getText())) {
+                password_ok = true;
                 messageLabel3.setText("");
             }
             else {
+                password_ok = false;
+                messageLabel3.setText("Password does not match.");
+            }
+            if(!usernameFound && password_ok) {
                 User user = new User();
-                user.setName(fullnameTextFiled.getText());
                 user.setUsername(usernameTextField.getText());
-                user.setPassword(passwordField.getText());
                 user.setRole(false);
-                UserDaoSQLImpl userd = new UserDaoSQLImpl();
-                userd.add(user);
-                messageLabel1.setText("");
-                messageLabel2.setText("You have been registered successfully!");
-                messageLabel3.setText("");
-                messageLabel4.setText("");
+                user.setPassword(passwordField.getText());
+                user.setName(fullnameTextFiled.getText());
+                userDaoSQL.add(user);
+                messageLabel2.setText("You have been successfully registered!");
+            }
+            else{
+                messageLabel2.setText("");
             }
         }
     }
