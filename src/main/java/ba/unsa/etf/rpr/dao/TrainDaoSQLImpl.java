@@ -2,29 +2,40 @@ package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.domain.User;
+import ba.unsa.etf.rpr.exceptions.TrainException;
 
 import java.io.FileReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
-public class TrainDaoSQLImpl implements TrainDao{
-    private Connection connection;
+public class TrainDaoSQLImpl extends AbstractDao<Train> implements TrainDao{
     public TrainDaoSQLImpl(){
+        super("Trains");
+    }
+
+    @Override
+    public Train row2object(ResultSet rs) throws TrainException {
         try {
-            FileReader reader = new FileReader("src/main/resources/db.properties");
-            Properties p = new Properties();
-            p.load(reader);
-            String s1=p.getProperty("user");
-            String s2=p.getProperty("password");
-            String s3=p.getProperty("url");
-            this.connection = DriverManager.getConnection(s3, s1, s2);
+            Train movie = new Train();
+            movie.setId(rs.getInt("id"));
+            movie.setRoute(rs.getString("route"));
+            movie.setDeparture(Timestamp.valueOf(rs.getTimestamp("departure").toLocalDateTime()));
+            movie.setCapacity(rs.getInt("capacity"));
+            return movie;
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new TrainException(e.getMessage(), e);
         }
     }
 
+    @Override
+    public Map<String, Object> object2row(Train object) {
+        return null;
+    }
+
+/*
     @Override
     public Train getById(int id) {
         String query = "SELECT * FROM Trains WHERE train_id = ?";
@@ -118,5 +129,5 @@ public class TrainDaoSQLImpl implements TrainDao{
             e.printStackTrace(); // poor error handling
         }
         return trains;
-    }
+    }*/
 }
