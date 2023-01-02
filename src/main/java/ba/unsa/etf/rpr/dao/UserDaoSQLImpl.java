@@ -136,4 +136,9 @@ public class UserDaoSQLImpl implements UserDao{
     public boolean findUsername(String usernameField) throws TrainException {
         return false;
     }
+
+    @Override
+    public boolean isAdmin(String usernameField) throws TrainException {
+        return false;
+    }
 }
