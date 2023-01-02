@@ -24,6 +24,21 @@ public class UserDaoSQLImpl implements UserDao{
             e.printStackTrace();
         }
     }
+    @Override
+    public User row2object(ResultSet rs) throws TrainException {
+        try {
+            User user = new User();
+            user.setUser_id(rs.getInt("id"));
+            user.setName(rs.getString("name"));
+            user.setRole(rs.getBoolean("admin"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            return user;
+        } catch (SQLException e) {
+            throw new TrainException(e.getMessage(), e);
+        }
+    }
+
 
 
     @Override
