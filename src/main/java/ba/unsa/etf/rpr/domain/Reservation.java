@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Reservation implements Idable {
     private int id;
     private int price;
-    private User u;
+    private User user;
     private Train t;
 
     public int getId() {
@@ -28,12 +28,12 @@ public class Reservation implements Idable {
         this.price = price;
     }
 
-    public User getU() {
-        return u;
+    public User getUser() {
+        return user;
     }
 
-    public void setU(User u) {
-        this.u = u;
+    public void setUser(User u) {
+        this.user = u;
     }
 
     public Train getT() {
@@ -49,7 +49,7 @@ public class Reservation implements Idable {
         return "Reservations{" +
                 "reservation_id=" + id +
                 ", price=" + price +
-                ", u=" + u +
+                ", u=" + user +
                 ", t=" + t +
                 '}';
     }
@@ -64,6 +64,6 @@ public class Reservation implements Idable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price, u, t);
+        return Objects.hash(id, price, user, t);
     }
 }
