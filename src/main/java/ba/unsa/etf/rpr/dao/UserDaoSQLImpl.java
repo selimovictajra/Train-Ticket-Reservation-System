@@ -131,4 +131,9 @@ public class UserDaoSQLImpl implements UserDao{
     public boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException {
         return false;
     }
+
+    @Override
+    public boolean findUsername(String usernameField) throws TrainException {
+        return false;
+    }
 }
