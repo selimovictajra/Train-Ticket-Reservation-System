@@ -4,6 +4,8 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
+import java.util.List;
+
 public class TrainManager {
 
     public Train update(Train cat) throws TrainException {
@@ -20,5 +22,9 @@ public class TrainManager {
             }
             throw e;
         }
+    }
+
+    public List<Train> getAll() throws TrainException {
+        return DaoFactory.trainDao().getAll();
     }
 }
