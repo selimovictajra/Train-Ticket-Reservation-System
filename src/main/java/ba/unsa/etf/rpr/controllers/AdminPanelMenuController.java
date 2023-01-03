@@ -14,8 +14,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 import java.awt.event.ActionEvent;
 import java.time.LocalDate;
@@ -40,9 +43,12 @@ public class AdminPanelMenuController {
     @FXML
     public TableColumn<Train, String> capacityColumn;
 
+
+
     void refreshTrains() {
         try {
             trainTable.setItems(FXCollections.observableList(trainManager.getAll()));
+            trainTable.refresh();
         } catch (TrainException e) {
             e.printStackTrace();
         }
