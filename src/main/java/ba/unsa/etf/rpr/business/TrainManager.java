@@ -12,12 +12,12 @@ public class TrainManager {
         return DaoFactory.trainDao().update(cat);
     }
 
-    public void delete(int movieId) throws TrainException{
+    public void delete(int movieId) throws TrainException {
         try{
             DaoFactory.trainDao().delete(movieId);
         }
         catch (TrainException e){
-            if (e.getMessage().contains("FOREIGN KEY")){
+            if (e.getMessage().contains("FOREIGN KEY")) {
                 throw new TrainException("Cannot delete this train since tickets have already been reserved.");
             }
             throw e;
@@ -27,4 +27,12 @@ public class TrainManager {
     public List<Train> getAll() throws TrainException {
         return DaoFactory.trainDao().getAll();
     }
+
+    public void validateAddFields(String name, String genre, String datetime, Integer duration,
+                                  Integer min, Integer hour) throws TrainException {
+        if(name.isEmpty() || genre.isEmpty() || datetime.isEmpty() || duration == null
+                || min == null || hour == null)
+            throw  new TrainException("To successfully perform an action, all fields must be filled in!");
+    }
+
 }
