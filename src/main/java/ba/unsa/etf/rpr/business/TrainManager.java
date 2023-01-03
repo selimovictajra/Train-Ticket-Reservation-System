@@ -38,4 +38,8 @@ public class TrainManager {
     public Train add(Train train) throws TrainException {
         return DaoFactory.trainDao().add(train);
     }
+
+    public  Train getById(int id) throws TrainException {
+        return DaoFactory.trainDao().getById(id);
+    }
 }
