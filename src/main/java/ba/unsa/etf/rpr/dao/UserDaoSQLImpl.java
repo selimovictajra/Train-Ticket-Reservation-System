@@ -85,4 +85,21 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
         return false;
     }
 
+    @Override
+    public int numberOfUsers() throws TrainException {
+        String insert = "SELECT count(1) FROM Users";
+        int nou = 0;
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                nou = rs.getInt(1);
+            }
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return nou;
+    }
+
 }
