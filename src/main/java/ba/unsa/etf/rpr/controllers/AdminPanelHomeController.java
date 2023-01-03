@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.exceptions.TrainException;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +14,18 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class AdminPanelHomeController {
+    public javafx.scene.control.Label usersLabel;
+
+    public void initialize() {
+        UserDaoSQLImpl userDaoSQL = new UserDaoSQLImpl();
+        try {
+            int num = userDaoSQL.numberOfUsers();
+            usersLabel.setText(String.valueOf(num));
+        }
+        catch(Exception e)  {
+            e.printStackTrace();
+        }
+    }
 
     public void menuLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
