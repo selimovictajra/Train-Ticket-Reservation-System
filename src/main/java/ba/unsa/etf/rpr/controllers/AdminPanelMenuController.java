@@ -79,6 +79,11 @@ public class AdminPanelMenuController {
         usernameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         passwordColumn.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
         refreshUsers();
+        ridColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("id"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("price"));
+        trainColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("train"));
+        userColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("user"));
+        refreshReservations();
     }
 
     void refreshTrains() {
