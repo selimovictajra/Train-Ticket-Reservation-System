@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.AdminPanelHomeController">
    <children>
       <Pane prefHeight="606.0" prefWidth="192.0" style="-fx-background-color: #ac0a0a;">
          <children>
-            <ImageView fitHeight="8.0" fitWidth="9.0" layoutX="14.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="9.0" fitWidth="9.0" layoutX="14.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/active.png" />
                </image>
@@ -27,17 +26,17 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="menuLink" layoutX="72.0" layoutY="186.0" onAction="#menuLinkOnAction" text="Menu">
+            <Hyperlink fx:id="menuLink" layoutX="-1.0" layoutY="187.0" onAction="#menuLinkOnAction" prefHeight="25.0" prefWidth="192.0" text="                  Menu">
                <font>
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink fx:id="logoutLink" layoutX="67.0" layoutY="564.0" onAction="#logoutLinkOnAction" text="Logout">
+            <Hyperlink fx:id="logoutLink" layoutX="67.0" layoutY="565.0" onAction="#logoutLinkOnAction" text="Logout">
                <font>
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <ImageView fitHeight="19.0" fitWidth="32.0" layoutX="43.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="19.0" fitWidth="32.0" layoutX="43.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/logout.png" />
                </image>
