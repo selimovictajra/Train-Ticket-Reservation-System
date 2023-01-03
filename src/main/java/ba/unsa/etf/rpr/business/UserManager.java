@@ -4,6 +4,8 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
+import java.util.List;
+
 public class UserManager {
 
     public void delete(int categoryId) throws TrainException {
@@ -20,5 +22,9 @@ public class UserManager {
 
     public User update(User cat) throws TrainException {
         return DaoFactory.userDao().update(cat);
+    }
+
+    public List<User> getAll() throws TrainException {
+        return DaoFactory.userDao().getAll();
     }
 }
