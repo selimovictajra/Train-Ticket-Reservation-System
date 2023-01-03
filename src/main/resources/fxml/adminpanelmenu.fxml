@@ -65,24 +65,26 @@
                                  <children>
                                     <TableView fx:id="trainTable" prefHeight="478.0" prefWidth="559.0">
                                       <columns>
-                                        <TableColumn fx:id="trainIdColumn" prefWidth="75.0" text="ID" />
-                                        <TableColumn fx:id="routeColumn" prefWidth="75.0" text="ROUTE" />
-                                          <TableColumn fx:id="departureColumn" prefWidth="75.0" text="DEPARTURE" />
-                                          <TableColumn fx:id="capacityColumn" prefWidth="75.0" text="CAPACITY" />
+                                        <TableColumn fx:id="trainIdColumn" prefWidth="43.0" text="ID" />
+                                        <TableColumn fx:id="routeColumn" prefWidth="137.0" text="ROUTE" />
+                                          <TableColumn fx:id="departureColumn" prefWidth="137.0" text="DEPARTURE" />
+                                          <TableColumn fx:id="capacityColumn" prefWidth="137.0" text="CAPACITY" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab text="Untitled Tab 2">
+                      <Tab text="USERS">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView prefHeight="478.0" prefWidth="559.0">
+                                    <TableView fx:id="usersTable" prefHeight="478.0" prefWidth="559.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
+                                        <TableColumn fx:id="userIdColumn" prefWidth="43.0" text="ID" />
+                                        <TableColumn fx:id="fullnameColumn" prefWidth="137.0" text="FULL NAME" />
+                                          <TableColumn fx:id="usernameColumn" prefWidth="137.0" text="USERNAME" />
+                                          <TableColumn fx:id="passwordColumn" prefWidth="137.0" text="PASSWORD" />
                                       </columns>
                                     </TableView>
                                  </children>
