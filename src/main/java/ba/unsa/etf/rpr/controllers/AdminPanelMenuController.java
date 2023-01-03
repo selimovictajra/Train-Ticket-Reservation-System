@@ -43,7 +43,14 @@ public class AdminPanelMenuController {
     @FXML
     public TableColumn<Train, String> capacityColumn;
 
-
+    @FXML
+    public void initialize() {
+        trainIdColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("id"));
+        routeColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("route"));
+        departureColumn.setCellValueFactory(new PropertyValueFactory<Train, LocalDate>("departure"));
+        capacityColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("capacity"));
+        refreshTrains();
+    }
 
     void refreshTrains() {
         try {
