@@ -3,6 +3,7 @@ package ba.unsa.etf.rpr.controllers;
 import ba.unsa.etf.rpr.business.ReservationManager;
 import ba.unsa.etf.rpr.business.TrainManager;
 import ba.unsa.etf.rpr.business.UserManager;
+import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
@@ -56,6 +57,17 @@ public class AdminPanelMenuController {
     public TableColumn<User, String> passwordColumn;
 
     @FXML
+    public TableView<Reservation> reservationTable;
+    @FXML
+    public TableColumn<Reservation, String> ridColumn;
+    @FXML
+    public TableColumn<Reservation, String> priceColumn;
+    @FXML
+    public TableColumn<Reservation, String> trainColumn;
+    @FXML
+    public TableColumn<Reservation, String> userColumn;
+
+    @FXML
     public void initialize() {
         trainIdColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("id"));
         routeColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("route"));
@@ -82,6 +94,15 @@ public class AdminPanelMenuController {
         try {
             usersTable.setItems(FXCollections.observableList(userManager.getAll()));
             usersTable.refresh();
+        } catch (TrainException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void refreshReservations() {
+        try {
+            reservationTable.setItems(FXCollections.observableList(reservationManager.getAll()));
+            reservationTable.refresh();
         } catch (TrainException e) {
             e.printStackTrace();
         }
