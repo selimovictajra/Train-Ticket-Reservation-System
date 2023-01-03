@@ -35,4 +35,7 @@ public class TrainManager {
             throw  new TrainException("To successfully perform an action, all fields must be filled in!");
     }
 
+    public Train add(Train train) throws TrainException {
+        return DaoFactory.trainDao().add(train);
+    }
 }
