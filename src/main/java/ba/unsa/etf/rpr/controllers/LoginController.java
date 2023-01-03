@@ -60,12 +60,10 @@ public class LoginController {
     public void registerButtonOnAction(ActionEvent ae) throws Exception {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/register.fxml")));
-            Stage registerStage = new Stage();
-            registerStage.initStyle(StageStyle.UNDECORATED);
-            registerStage.setScene(new Scene(root, 600, 536));
-            Stage stage = (Stage) cancelButton.getScene().getWindow();
-            stage.close();
-            registerStage.show();
+            Stage stage = (Stage)((javafx.scene.Node)ae.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
         catch(Exception exception) {
             exception.printStackTrace();
