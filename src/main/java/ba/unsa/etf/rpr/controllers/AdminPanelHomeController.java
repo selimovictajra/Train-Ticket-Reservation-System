@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class AdminPanelHomeController {
-    private Label usersLabel;
 
     public void menuLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
