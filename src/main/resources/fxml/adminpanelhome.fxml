@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.AdminPanelHomeController" />
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.AdminPanelHomeController">
+   <children>
+      <Pane prefHeight="606.0" prefWidth="192.0" style="-fx-background-color: #ac0a0a;">
+         <children>
+            <ImageView fitHeight="8.0" fitWidth="9.0" layoutX="14.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/active.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="23.0" layoutY="34.0" prefHeight="19.0" prefWidth="40.0" text="Active" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="1.0" layoutY="153.0" prefHeight="25.0" prefWidth="192.0" style="-fx-background-color: #8c0a0a;" text="                  Home" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="menuLink" layoutX="72.0" layoutY="186.0" text="Menu">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="logoutLink" layoutX="67.0" layoutY="564.0" text="Logout">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fitHeight="19.0" fitWidth="32.0" layoutX="43.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/logout.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="219.0" layoutY="117.0" prefHeight="108.0" prefWidth="202.0" style="-fx-background-color: #3fa5e4;">
+         <children>
+            <Label layoutX="134.0" layoutY="67.0" prefHeight="27.0" prefWidth="54.0" text="Users" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="usersLabel" layoutX="134.0" layoutY="23.0" prefHeight="31.0" prefWidth="54.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="47.0" fitWidth="69.0" layoutX="8.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/users.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label layoutX="219.0" layoutY="38.0" prefHeight="38.0" prefWidth="140.0" text="WELLCOME" textFill="#ac0a0a">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Pane layoutX="441.0" layoutY="117.0" prefHeight="108.0" prefWidth="202.0" style="-fx-background-color: #a823d4;">
+         <children>
+            <Label layoutX="60.0" layoutY="68.0" prefHeight="26.0" prefWidth="128.0" text="Brand popularity" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="133.0" layoutY="23.0" text="+87%" textFill="WHITE">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="48.0" fitWidth="40.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/globe.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="664.0" layoutY="117.0" prefHeight="108.0" prefWidth="202.0" style="-fx-background-color: #e37332;">
+         <children>
+            <ImageView fitHeight="41.0" fitWidth="40.0" layoutX="14.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/graph.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="148.0" layoutY="68.0" text="Profit" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="148.0" layoutY="20.0" text="\$5M" textFill="WHITE">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="220.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="311.0" fitWidth="555.0" layoutX="192.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/gr.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="245.0" layoutY="334.0" prefHeight="17.0" prefWidth="151.0" style="-fx-background-color: #ffffff;" text="Activities" />
+   </children>
+</Pane>
