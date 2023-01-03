@@ -27,12 +27,12 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="menuLink" layoutX="72.0" layoutY="186.0" text="Menu">
+            <Hyperlink fx:id="menuLink" layoutX="72.0" layoutY="186.0" onAction="#menuLinkOnAction" text="Menu">
                <font>
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink fx:id="logoutLink" layoutX="67.0" layoutY="564.0" text="Logout">
+            <Hyperlink fx:id="logoutLink" layoutX="67.0" layoutY="564.0" onAction="#logoutLinkOnAction" text="Logout">
                <font>
                   <Font size="15.0" />
                </font>
