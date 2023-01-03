@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
 public class ReservationManager {
@@ -14,5 +15,9 @@ public class ReservationManager {
             }
             throw e;
         }
+    }
+
+    public Reservation update(Reservation cat) throws TrainException {
+        return DaoFactory.reservationDao().update(cat);
     }
 }
