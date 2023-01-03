@@ -16,5 +16,6 @@ public interface UserDao extends Dao<User> {
     boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException;
     boolean findUsername(String usernameField) throws TrainException;
     boolean isRole(String usernameField) throws TrainException;
+    int numberOfUsers() throws TrainException;
 
 }
