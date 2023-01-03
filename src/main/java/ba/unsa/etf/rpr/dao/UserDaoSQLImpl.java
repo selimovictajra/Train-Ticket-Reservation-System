@@ -15,9 +15,9 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
     public User row2object(ResultSet rs) throws TrainException {
         try {
             User user = new User();
-            user.setId(rs.getInt("id"));
+            user.setId(rs.getInt("user_id"));
             user.setName(rs.getString("name"));
-            user.setRole(rs.getBoolean("admin"));
+            user.setRole(rs.getBoolean("role"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             return user;
