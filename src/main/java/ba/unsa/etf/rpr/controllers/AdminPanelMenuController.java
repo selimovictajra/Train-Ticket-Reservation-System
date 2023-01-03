@@ -4,6 +4,7 @@ import ba.unsa.etf.rpr.business.ReservationManager;
 import ba.unsa.etf.rpr.business.TrainManager;
 import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.domain.Train;
+import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -44,15 +45,15 @@ public class AdminPanelMenuController {
     public TableColumn<Train, String> capacityColumn;
 
     @FXML
-    public TableView<Train> usersTable;
+    public TableView<User> usersTable;
     @FXML
-    public TableColumn<Train, String> userIdColumn;
+    public TableColumn<User, String> userIdColumn;
     @FXML
-    public TableColumn<Train, String> nameColumn;
+    public TableColumn<User, String> nameColumn;
     @FXML
-    public TableColumn<Train, String> usernameColumn;
+    public TableColumn<User, String> usernameColumn;
     @FXML
-    public TableColumn<Train, String> passwordColumn;
+    public TableColumn<User, String> passwordColumn;
 
     @FXML
     public void initialize() {
@@ -61,6 +62,11 @@ public class AdminPanelMenuController {
         departureColumn.setCellValueFactory(new PropertyValueFactory<Train, LocalDate>("departure"));
         capacityColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("capacity"));
         refreshTrains();
+        userIdColumn.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+        passwordColumn.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
+        refreshUsers();
     }
 
     void refreshTrains() {
@@ -74,7 +80,7 @@ public class AdminPanelMenuController {
 
     void refreshUsers() {
         try {
-            usersTable.setItems(FXCollections.observableList(trainManager.getAll()));
+            usersTable.setItems(FXCollections.observableList(userManager.getAll()));
             usersTable.refresh();
         } catch (TrainException e) {
             e.printStackTrace();
