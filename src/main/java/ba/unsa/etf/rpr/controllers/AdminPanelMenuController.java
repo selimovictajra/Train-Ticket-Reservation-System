@@ -44,6 +44,17 @@ public class AdminPanelMenuController {
     public TableColumn<Train, String> capacityColumn;
 
     @FXML
+    public TableView<Train> usersTable;
+    @FXML
+    public TableColumn<Train, String> userIdColumn;
+    @FXML
+    public TableColumn<Train, String> nameColumn;
+    @FXML
+    public TableColumn<Train, String> usernameColumn;
+    @FXML
+    public TableColumn<Train, String> passwordColumn;
+
+    @FXML
     public void initialize() {
         trainIdColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("id"));
         routeColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("route"));
@@ -56,6 +67,15 @@ public class AdminPanelMenuController {
         try {
             trainTable.setItems(FXCollections.observableList(trainManager.getAll()));
             trainTable.refresh();
+        } catch (TrainException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void refreshUsers() {
+        try {
+            usersTable.setItems(FXCollections.observableList(trainManager.getAll()));
+            usersTable.refresh();
         } catch (TrainException e) {
             e.printStackTrace();
         }
