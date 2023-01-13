@@ -21,7 +21,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="1.0" layoutY="153.0" prefHeight="27.0" prefWidth="193.0" style="-fx-background-color: #8c0a0a;" text="                  Home" textFill="WHITE">
+            <Label layoutY="153.0" prefHeight="27.0" prefWidth="193.0" style="-fx-background-color: #8c0a0a;" text="                  Home" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -51,7 +51,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink layoutX="62.0" layoutY="292.0" text="Edit train">
+            <Hyperlink layoutX="62.0" layoutY="292.0" onAction="#editTrainOnAction" text="Edit train">
                <font>
                   <Font size="15.0" />
                </font>
