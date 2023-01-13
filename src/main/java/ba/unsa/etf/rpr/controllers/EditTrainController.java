@@ -13,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -52,6 +54,26 @@ public class EditTrainController {
         catch (Exception e) {
             e.printStackTrace();
             e.getCause();
+        }
+    }
+
+    public void editButtonOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
+        try {
+            trainManager.validateDeleteFields(routeBox.getValue());
+            trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue());
+            LocalDate localDate = date.getValue();
+            LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
+            Train train = new Train();
+            train.setCapacity(100);
+            train.setRoute(routeText.getText());
+            train.setDeparture(localDateTime);
+            trainManager.add(train);
+            message1.setText("");
+            message2.setText("You have been successfully edited train route with id " + routeBox.getValue() + "!");
+        }
+        catch (Exception e) {
+            message1.setText(e.getMessage());
+            message2.setText("");
         }
     }
 
