@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.domain;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Objects;
 public class Train implements Idable {
     private int id;
     private String route;
-    private Timestamp departure;
+    private LocalDateTime departure;
     private int capacity;
 
     public int getId() {
@@ -29,11 +31,11 @@ public class Train implements Idable {
         this.route = route;
     }
 
-    public Timestamp getDeparture() {
+    public LocalDateTime getDeparture() {
         return departure;
     }
 
-    public void setDeparture(Timestamp departure) {
+    public void setDeparture(LocalDateTime departure) {
         this.departure = departure;
     }
 
