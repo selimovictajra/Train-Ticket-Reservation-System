@@ -42,4 +42,8 @@ public class TrainManager {
     public  Train getById(int id) throws TrainException {
         return DaoFactory.trainDao().getById(id);
     }
+
+    public void validateDeleteFields(Integer id) throws TrainException {
+        if (id == null) throw new TrainException("Id field must be filled in!");
+    }
 }
