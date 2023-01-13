@@ -41,6 +41,21 @@
                   <Image url="@../Images/logout.png" />
                </image>
             </ImageView>
+            <Hyperlink layoutX="53.0" layoutY="223.0" onAction="#deleteTrainLinkOnAction" text="Delete Train">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink layoutX="61.0" layoutY="257.0" text="Add Train">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink layoutX="62.0" layoutY="292.0" text="Edit train">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
          </children>
       </Pane>
       <Pane layoutX="219.0" layoutY="117.0" prefHeight="108.0" prefWidth="202.0" style="-fx-background-color: #3fa5e4;">
