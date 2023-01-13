@@ -48,6 +48,16 @@
                   <Font size="15.0" />
                </font>
             </Label>
+            <Hyperlink layoutX="67.0" layoutY="565.0" onAction="#logoutLinkOnAction" text="Logout">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Hyperlink>
+            <ImageView fitHeight="19.0" fitWidth="32.0" layoutX="43.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/logout.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Label layoutX="228.0" layoutY="75.0" prefHeight="27.0" prefWidth="378.0" text="DELETE TRAIN" textFill="#ac0a0a">
