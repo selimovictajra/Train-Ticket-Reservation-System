@@ -114,24 +114,6 @@ public class AdminPanelMenuController {
         }
     }
 
-    public void openDialog(String title, String file) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(file));
-            Stage stage = new Stage();
-            stage.setScene(new Scene((Parent) loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-            stage.setTitle(title);
-            stage.initStyle(StageStyle.UTILITY);
-            stage.show();
-            stage.setOnHiding(event -> {
-                ((Stage) adminPane.getScene().getWindow()).show();
-                refreshTrains();
-            });
-        }
-        catch (Exception e) {
-            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
-        }
-    }
-
     public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/adminpanelhome.fxml")));
