@@ -23,12 +23,12 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="72.0" layoutY="152.0" text="Home">
+            <Hyperlink layoutX="72.0" layoutY="152.0" onAction="#homeLinkOnAction" text="Home">
                <font>
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink layoutX="73.0" layoutY="187.0" text="Menu">
+            <Hyperlink layoutX="73.0" layoutY="187.0" onAction="#menuLinkOnAction" text="Menu">
                <font>
                   <Font size="15.0" />
                </font>
