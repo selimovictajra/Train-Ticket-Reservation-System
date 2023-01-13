@@ -19,7 +19,7 @@ public class TrainDaoSQLImpl extends AbstractDao<Train> implements TrainDao{
             Train movie = new Train();
             movie.setId(rs.getInt("id"));
             movie.setRoute(rs.getString("route"));
-            movie.setDeparture(Timestamp.valueOf(rs.getTimestamp("departure").toLocalDateTime()));
+            movie.setDeparture(rs.getTimestamp("departure").toLocalDateTime());
             movie.setCapacity(rs.getInt("capacity"));
             return movie;
         } catch (Exception e) {
