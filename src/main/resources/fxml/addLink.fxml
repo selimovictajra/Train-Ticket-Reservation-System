@@ -45,7 +45,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink layoutX="60.0" layoutY="292.0" onAction="#editTrainOnAction" text="Edit Train">
+            <Hyperlink layoutX="60.0" layoutY="292.0" onAction="#editTrainLinkOnAction" text="Edit Train">
                <font>
                   <Font size="15.0" />
                </font>
