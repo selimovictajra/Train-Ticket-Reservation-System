@@ -42,8 +42,10 @@ public class DeleteTrainController {
             trainManager.validateDeleteFields(trainRoutes.getValue());
             trainManager.delete(trainRoutes.getValue());
             message1.setText("You have been successfully deleted train route!");
+            message2.setText("");
         }
         catch (TrainException e) {
+            message1.setText("");
             message2.setText(e.getMessage());
         }
     }
