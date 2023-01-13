@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.EditTrainController">
    <children>
       <Pane prefHeight="600.0" prefWidth="192.0" style="-fx-background-color: #ac0a0a;">
@@ -101,12 +100,12 @@
             <TextField fx:id="routeText" layoutX="130.0" layoutY="256.0" prefHeight="27.0" prefWidth="359.0" />
             <DatePicker fx:id="date" layoutX="129.0" layoutY="313.0" prefHeight="27.0" prefWidth="175.0" />
             <Button layoutX="70.0" layoutY="459.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="27.0" prefWidth="72.0" style="-fx-background-color: #ffff00;" text="Edit" />
-            <Label layoutX="84.0" layoutY="411.0" prefHeight="27.0" prefWidth="266.0" textFill="RED">
+            <Label fx:id="message1" layoutX="84.0" layoutY="411.0" prefHeight="27.0" prefWidth="266.0" textFill="RED">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="175.0" layoutY="530.0" prefHeight="27.0" prefWidth="359.0" textFill="#1eff00">
+            <Label fx:id="message2" layoutX="175.0" layoutY="530.0" prefHeight="27.0" prefWidth="359.0" textFill="#1eff00">
                <font>
                   <Font size="13.0" />
                </font>
