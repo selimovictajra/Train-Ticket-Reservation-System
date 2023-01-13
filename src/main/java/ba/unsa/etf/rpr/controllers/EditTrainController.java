@@ -118,7 +118,7 @@ public class EditTrainController {
     }
     public void addTrainLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/addTrain.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/addLink.fxml")));
             Stage stage = (Stage) ((javafx.scene.Node)actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
