@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -50,6 +51,21 @@ public class EditTrainController {
             routeBox.getItems().addAll(trainIds);
             hourBox.getItems().addAll(hour);
             minBox.getItems().addAll(min);
+            routeBox.getSelectionModel().selectedItemProperty().addListener((observable, oldvalue, newvalue) -> {
+                Train train1 = null;
+                try {
+                    train1 = trainManager.getById(newvalue);
+                    routeText.setText(train1.getRoute());
+                    LocalDateTime localDateTime = train1.getDeparture();
+                    date.setValue(localDateTime.toLocalDate());
+                    LocalTime localTime = localDateTime.toLocalTime();
+                    hourBox.setValue(localTime.getHour());
+                    minBox.setValue(localTime.getMinute());
+                }
+                catch (TrainException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
         catch (Exception e) {
             e.printStackTrace();
