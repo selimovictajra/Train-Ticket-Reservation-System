@@ -4,12 +4,17 @@ import ba.unsa.etf.rpr.business.TrainManager;
 import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DeleteTrainController {
     @FXML
@@ -40,6 +45,20 @@ public class DeleteTrainController {
         }
         catch (TrainException e) {
             message2.setText(e.getMessage());
+        }
+    }
+
+    public void logoutLinkOnAction(javafx.event.ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
+            Stage stage = (Stage)((javafx.scene.Node)actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch(Exception exception) {
+            exception.printStackTrace();
+            exception.getCause();
         }
     }
 }
