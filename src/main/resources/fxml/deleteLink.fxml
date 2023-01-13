@@ -38,7 +38,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Hyperlink layoutX="60.0" layoutY="292.0" text="Edit Train">
+            <Hyperlink layoutX="60.0" layoutY="292.0" onAction="#editTrainOnAction" text="Edit Train">
                <font>
                   <Font size="15.0" />
                </font>
@@ -81,7 +81,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Label fx:id="message1" layoutX="342.0" layoutY="402.0" prefHeight="19.0" prefWidth="438.0" textFill="#1eff00">
+      <Label fx:id="message1" layoutX="389.0" layoutY="389.0" prefHeight="19.0" prefWidth="278.0" textFill="#1eff00">
          <font>
             <Font size="13.0" />
          </font>
