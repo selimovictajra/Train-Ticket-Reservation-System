@@ -19,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -110,6 +111,24 @@ public class AdminPanelMenuController {
             reservationTable.refresh();
         } catch (TrainException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void openDialog(String title, String file) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(file));
+            Stage stage = new Stage();
+            stage.setScene(new Scene((Parent) loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setTitle(title);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            stage.setOnHiding(event -> {
+                ((Stage) adminPane.getScene().getWindow()).show();
+                refreshTrains();
+            });
+        }
+        catch (Exception e) {
+            new Alert(Alert.AlertType.NONE, e.getMessage(), ButtonType.OK).show();
         }
     }
 
