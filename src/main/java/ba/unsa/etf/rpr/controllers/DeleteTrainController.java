@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,10 @@ public class DeleteTrainController {
     @FXML
     private List<Integer> trainIds = new ArrayList<Integer>();
     private TrainManager trainManager = new TrainManager();
-    private Label message;
+    @FXML
+    private Label message1;
+    @FXML
+    private Label message2;
 
     @FXML
     public void initialize() throws TrainException {
@@ -26,5 +30,16 @@ public class DeleteTrainController {
             trainIds.add(train.getId());
         }
         trainRoutes.getItems().addAll(trainIds);
+    }
+
+    public void deleteButtonOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
+        try {
+            trainManager.validateDeleteFields(trainRoutes.getValue());
+            trainManager.delete(trainRoutes.getValue());
+            message1.setText("You have been successfully deleted train route!");
+        }
+        catch (TrainException e) {
+            message2.setText(e.getMessage());
+        }
     }
 }
