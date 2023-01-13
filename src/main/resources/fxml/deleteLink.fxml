@@ -43,7 +43,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <Label layoutX="1.0" layoutY="223.0" prefHeight="27.0" prefWidth="192.0" style="-fx-background-color: #8c0a0a;" text="              Delete Train" textFill="WHITE">
+            <Label layoutY="223.0" prefHeight="27.0" prefWidth="192.0" style="-fx-background-color: #8c0a0a;" text="              Delete Train" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
