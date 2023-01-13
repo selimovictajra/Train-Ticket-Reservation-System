@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.TrainManager;
+import ba.unsa.etf.rpr.domain.Train;
+import ba.unsa.etf.rpr.exceptions.TrainException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class AddTrainController {
@@ -35,6 +39,24 @@ public class AddTrainController {
         minBox.getItems().addAll(min);
     }
 
+    public void addButtonOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
+        try {
+            trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue());
+            LocalDate localDate = date.getValue();
+            LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
+            Train train = new Train();
+            train.setRoute(routeText.getText());
+            train.setCapacity(50);
+            train.setDeparture(localDateTime);
+            trainManager.add(train);
+            message1.setText("");
+            message2.setText("You have been successfully added train route!");
+        }
+        catch(Exception e) {
+            message1.setText(e.getMessage());
+            message2.setText("");
+        }
+    }
     public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/adminpanelhome.fxml")));
