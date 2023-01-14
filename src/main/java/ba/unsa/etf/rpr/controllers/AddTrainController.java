@@ -46,7 +46,7 @@ public class AddTrainController {
             LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
             Train train = new Train();
             train.setRoute(routeText.getText());
-            train.setCapacity(50);
+            train.setCapacity(100);
             train.setDeparture(localDateTime);
             trainManager.add(train);
             message1.setText("");
