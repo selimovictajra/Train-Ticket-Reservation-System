@@ -80,10 +80,11 @@ public class EditTrainController {
             LocalDate localDate = date.getValue();
             LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
             Train train = new Train();
+            train.setId(routeBox.getValue());
             train.setCapacity(100);
             train.setRoute(routeText.getText());
             train.setDeparture(localDateTime);
-            trainManager.add(train);
+            trainManager.update(train);
             message1.setText("");
             message2.setText("You have been successfully edited train route with id " + routeBox.getValue() + "!");
         }
