@@ -12,13 +12,13 @@ public class TrainManager {
         return DaoFactory.trainDao().update(cat);
     }
 
-    public void delete(int movieId) throws TrainException {
+    public void delete(int trainId) throws TrainException {
         try{
-            DaoFactory.trainDao().delete(movieId);
+            DaoFactory.trainDao().delete(trainId);
         }
         catch (TrainException e){
             if (e.getMessage().contains("FOREIGN KEY")) {
-                throw new TrainException("Cannot delete this train since tickets have already been reserved.");
+                throw new TrainException("Cannot delete this train route since tickets have already been reserved.");
             }
             throw e;
         }
