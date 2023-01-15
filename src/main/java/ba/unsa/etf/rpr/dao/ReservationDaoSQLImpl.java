@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.dao;
+import ba.unsa.etf.rpr.business.ReservationManager;
 import ba.unsa.etf.rpr.domain.Reservation;
+import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
 import java.io.FileReader;
@@ -33,6 +35,22 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         item.put("train_id", object.getTrain().getId());
         item.put("price", object.getPrice());
         return item;
+    }
+
+    public List<Train> getByUser(int idUser) throws TrainException {
+        try {
+            List<Train> trains = new ArrayList<>();
+            ReservationManager reservationManager = new ReservationManager();
+            List<Reservation> reservations = new ArrayList<>(reservationManager.getAll());
+            for (int i = 0; i < reservations.size(); i++) {
+                Reservation reservation = reservations.get(i);
+                if (reservation.getUser().getId() == idUser) trains.add(reservation.getTrain());
+            }
+            return trains;
+        }
+        catch (Exception e) {
+            throw new TrainException(e.getMessage(), e);
+        }
     }
 
 }

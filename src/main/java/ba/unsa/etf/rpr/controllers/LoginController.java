@@ -58,7 +58,7 @@ public class LoginController {
                     stage.show();
                 }
                 else {
-                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelBooking.fxml")));
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelHome.fxml")));
                     Stage stage = (Stage)((javafx.scene.Node)ae.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);

@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Reservation;
+import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
 import java.time.LocalDate;
