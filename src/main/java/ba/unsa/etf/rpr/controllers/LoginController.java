@@ -1,6 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
+import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -31,6 +33,7 @@ public class LoginController {
     private TextField usernameTextField;
     @FXML
     private PasswordField passwordField;
+    private UserManager userManager = new UserManager();
 
     public void CancelButtonOnAction(ActionEvent ae) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
@@ -42,16 +45,27 @@ public class LoginController {
             loginMessage.setText("Invalid login. Please try again.");
         }
         else {
-            UserDaoSQLImpl user = new UserDaoSQLImpl();
-            if (user.checkUsernamePassword(usernameTextField.getText(),passwordField.getText())) {
-                if (user.isRole(usernameTextField.getText())) {
+            Integer index = userManager.checkUsernamePassword(usernameTextField.getText(), passwordField.getText());
+            if (index != null) {
+                User user = userManager.getById(index);
+                Model model = Model.getInstance();
+                model.setUser(user);
+                if (userManager.isRole(usernameTextField.getText())) {
                     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/adminpanelhome.fxml")));
                     Stage stage = (Stage)((javafx.scene.Node)ae.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
                 }
-            } else {
+                else {
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelBooking.fxml")));
+                    Stage stage = (Stage)((javafx.scene.Node)ae.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
+            else {
                 loginMessage.setText("Invalid login. Please try again.");
             }
         }
