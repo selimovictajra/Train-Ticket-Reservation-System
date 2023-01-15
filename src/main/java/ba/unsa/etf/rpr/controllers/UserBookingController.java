@@ -51,11 +51,17 @@ public class UserBookingController {
             System.out.println("ok");
             for (int i = 0; i < trains.size(); i++) {
                 Train train = trains.get(i);
-                routes.add(train.getRoute());
+                boolean here = false;
+                for (int j = 0; j < routes.size(); j++) {
+                    if (routes.get(j).equals(train)) here = true;
+                }
+                if (!here) routes.add(train.getRoute());
             }
             routeBox.getItems().addAll(routes);
             routeBox.getSelectionModel().selectedItemProperty().addListener((observable, oldvalue, newvalue) -> {
                 try {
+                    dateBox.getItems().clear();
+                    dateL.clear();
                     for (int i = 0; i < trains.size(); i++) {
                         if (trains.get(i).getRoute().equals(routeBox.getValue())) {
                             //System.out.println("usao");
@@ -72,10 +78,13 @@ public class UserBookingController {
                     message1.setText(e.getMessage());
                     message2.setText("");
                     priceLabel.setText("");
+                    System.out.println(e.getMessage());
                 }
             });
             dateBox.getSelectionModel().selectedItemProperty().addListener((observable, oldvalue, newvalue) -> {
                 try {
+                    timeBox.getItems().clear();
+                    timeL.clear();
                     for (int i = 0; i < trains.size(); i++) {
                         if (trains.get(i).getRoute().equals(routeBox.getValue())) {
                             //System.out.println("usao");
@@ -92,6 +101,7 @@ public class UserBookingController {
                     message1.setText(e.getMessage());
                     message2.setText("");
                     priceLabel.setText("");
+                    System.out.println(e.getMessage());
                 }
             });
         }
@@ -99,6 +109,7 @@ public class UserBookingController {
             message1.setText(e.getMessage());
             message2.setText("");
             priceLabel.setText("");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -151,4 +162,18 @@ public class UserBookingController {
             e.getCause();
         }
     }
+    public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelHome.fxml")));
+            Stage stage = (Stage) ((javafx.scene.Node)actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
 }
