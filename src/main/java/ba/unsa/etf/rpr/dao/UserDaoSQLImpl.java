@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
-import java.io.FileReader;
 import java.sql.*;
 import java.util.*;
 
@@ -69,20 +68,20 @@ public class UserDaoSQLImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public boolean checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException{
-        String insert = "SELECT count(1) from Users where username ='" + usernameTextField + "' AND password='"
+    public Integer checkUsernamePassword(String usernameTextField, String passwordField) throws TrainException{
+        String insert = "SELECT id from Users where username ='" + usernameTextField + "' AND password='"
                 + passwordField + "'";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) { // result set is iterator.
-                return rs.getInt(1) == 1;
+            while (rs.next()) {
+                return rs.getInt(1);
             }
             rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     @Override
