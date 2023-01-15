@@ -34,6 +34,12 @@ public class TrainManager {
         }
     }
 
+    public void validateBookFields(String route, String date, String time) throws TrainException {
+        if(route.isEmpty() || date.isEmpty() || time.isEmpty()) {
+            throw new TrainException("All fields must be filled in!");
+        }
+    }
+
     public Train add(Train train) throws TrainException {
         return DaoFactory.trainDao().add(train);
     }
