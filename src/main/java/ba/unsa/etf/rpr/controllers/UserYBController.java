@@ -24,4 +24,17 @@ public class UserYBController {
             e.getCause();
         }
     }
+    public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelHome.fxml")));
+            Stage stage = (Stage) ((javafx.scene.Node)actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
 }
