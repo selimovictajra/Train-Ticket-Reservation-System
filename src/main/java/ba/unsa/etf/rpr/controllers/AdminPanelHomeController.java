@@ -15,12 +15,15 @@ import java.util.Objects;
 
 public class AdminPanelHomeController {
     public javafx.scene.control.Label usersLabel;
+    public javafx.scene.control.Label adminLabel;
 
     public void initialize() {
         UserDaoSQLImpl userDaoSQL = new UserDaoSQLImpl();
         try {
             int num = userDaoSQL.numberOfUsers();
             usersLabel.setText(String.valueOf(num));
+            Model model = Model.getInstance();
+            adminLabel.setText(model.getUser().getName());
         }
         catch(Exception e)  {
             e.printStackTrace();
