@@ -49,11 +49,13 @@ public class UserBookingController {
             trainManager.validateBookFields(routeBox.toString(), dateBox.toString(), timeBox.toString());
             List<Train> trains = trainManager.getAll();
             System.out.println("ok");
-            for (int i = 0; i < trains.size(); i++) {
-                Train train = trains.get(i);
+            for (Train train : trains) {
                 boolean here = false;
-                for (int j = 0; j < routes.size(); j++) {
-                    if (routes.get(j).equals(train)) here = true;
+                for (String route : routes) {
+                    if (route.equals(train.getRoute())) {
+                        here = true;
+                        break;
+                    }
                 }
                 if (!here) routes.add(train.getRoute());
             }
@@ -62,10 +64,10 @@ public class UserBookingController {
                 try {
                     dateBox.getItems().clear();
                     dateL.clear();
-                    for (int i = 0; i < trains.size(); i++) {
-                        if (trains.get(i).getRoute().equals(routeBox.getValue())) {
+                    for (Train value : trains) {
+                        if (value.getRoute().equals(routeBox.getValue())) {
                             //System.out.println("usao");
-                            Train train = trains.get(i);
+                            Train train = value;
                             LocalDateTime localDateTime = train.getDeparture();
                             dateL.add(localDateTime.toLocalDate());
                             //timeL.add(localDateTime.toLocalTime());
@@ -85,11 +87,10 @@ public class UserBookingController {
                 try {
                     timeBox.getItems().clear();
                     timeL.clear();
-                    for (int i = 0; i < trains.size(); i++) {
-                        if (trains.get(i).getRoute().equals(routeBox.getValue())) {
+                    for (Train value : trains) {
+                        if (value.getRoute().equals(routeBox.getValue()) && value.getDeparture().toLocalDate().equals(dateBox.getValue())) {
                             //System.out.println("usao");
-                            Train train = trains.get(i);
-                            LocalDateTime localDateTime = train.getDeparture();
+                            LocalDateTime localDateTime = value.getDeparture();
                             //dateL.add(localDateTime.toLocalDate());
                             timeL.add(localDateTime.toLocalTime());
                         }
