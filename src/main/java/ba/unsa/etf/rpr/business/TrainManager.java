@@ -28,8 +28,8 @@ public class TrainManager {
         return DaoFactory.trainDao().getAll();
     }
 
-    public void validateAddFields(String route, String datetime, Integer min, Integer hour) throws TrainException {
-        if(route.isEmpty() || datetime.isEmpty() || min == null || hour == null) {
+    public void validateAddFields(String route, String datetime, Integer min, Integer hour, Integer price) throws TrainException {
+        if(route.isEmpty() || datetime.isEmpty() || min == null || hour == null || price == null) {
             throw new TrainException("All fields must be filled in!");
         }
     }
