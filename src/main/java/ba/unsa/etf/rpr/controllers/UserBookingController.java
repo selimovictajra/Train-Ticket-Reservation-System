@@ -120,7 +120,7 @@ public class UserBookingController {
             Model model = Model.getInstance();
             User user = model.getUser();
             //train building
-            Train train = new Train();
+            //Train train = new Train();
             LocalDate localDate = dateBox.getValue();
             LocalDateTime localDateTime = localDate.atTime(timeBox.getValue());
             List<Train> trains = trainManager.getAll();
@@ -128,18 +128,17 @@ public class UserBookingController {
             for (int i = 0; i < trains.size(); i++) {
                 Train train1 = trains.get(i);
                 if (train1.getRoute().equals(routeBox.getValue()) && train1.getDeparture().equals(localDateTime)) {
-                    train.setId(train1.getId());
+                    //train.setId(train1.getId());
                     reservation.setTrain(train1);
                     System.out.println("usao " + train1.getId());
                 }
             }
             //reservation building
-            reservation.setPrice(30);
             reservation.setUser(user);
             reservationManager.add(reservation);
             message1.setText("");
             message2.setText("You have been successfully booked train ticket!");
-            priceLabel.setText("Price: 30$");
+            priceLabel.setText("Price: " + reservation.getTrain().getPrice());
         }
         catch (TrainException e) {
             message1.setText(e.getMessage());
