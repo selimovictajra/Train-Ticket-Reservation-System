@@ -45,6 +45,8 @@ public class AdminPanelMenuController {
     public TableColumn<Train, LocalDate> departureColumn;
     @FXML
     public TableColumn<Train, String> capacityColumn;
+    @FXML
+    public TableColumn<Train, String> priceColumn;
 
     @FXML
     public TableView<User> usersTable;
@@ -62,8 +64,6 @@ public class AdminPanelMenuController {
     @FXML
     public TableColumn<Reservation, String> ridColumn;
     @FXML
-    public TableColumn<Reservation, String> priceColumn;
-    @FXML
     public TableColumn<Reservation, String> trainColumn;
     @FXML
     public TableColumn<Reservation, String> userColumn;
@@ -74,6 +74,7 @@ public class AdminPanelMenuController {
         routeColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("route"));
         departureColumn.setCellValueFactory(new PropertyValueFactory<Train, LocalDate>("departure"));
         capacityColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("capacity"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("price"));
         refreshTrains();
         userIdColumn.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
@@ -81,7 +82,6 @@ public class AdminPanelMenuController {
         passwordColumn.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
         refreshUsers();
         ridColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("id"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("price"));
         trainColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("train"));
         userColumn.setCellValueFactory(new PropertyValueFactory<Reservation, String>("user"));
         refreshReservations();
