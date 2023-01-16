@@ -16,12 +16,13 @@ public class TrainDaoSQLImpl extends AbstractDao<Train> implements TrainDao{
     @Override
     public Train row2object(ResultSet rs) throws TrainException {
         try {
-            Train movie = new Train();
-            movie.setId(rs.getInt("id"));
-            movie.setRoute(rs.getString("route"));
-            movie.setDeparture(rs.getTimestamp("departure").toLocalDateTime());
-            movie.setCapacity(rs.getInt("capacity"));
-            return movie;
+            Train train = new Train();
+            train.setId(rs.getInt("id"));
+            train.setRoute(rs.getString("route"));
+            train.setDeparture(rs.getTimestamp("departure").toLocalDateTime());
+            train.setCapacity(rs.getInt("capacity"));
+            train.setPrice(rs.getInt("price"));
+            return train;
         } catch (Exception e) {
             throw new TrainException(e.getMessage(), e);
         }
@@ -34,6 +35,7 @@ public class TrainDaoSQLImpl extends AbstractDao<Train> implements TrainDao{
         item.put("route", object.getRoute());
         item.put("departure", object.getDeparture());
         item.put("capacity", object.getCapacity());
+        item.put("price", object.getPrice());
         return item;
     }
 
