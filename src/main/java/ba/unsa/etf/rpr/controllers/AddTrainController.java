@@ -27,27 +27,32 @@ public class AddTrainController {
     @FXML
     private ChoiceBox<Integer> minBox;
     @FXML
+    private  ChoiceBox<Integer> priceBox;
+    @FXML
     private Label message1;
     @FXML
     private Label message2;
     TrainManager trainManager = new TrainManager();
     private Integer[] hour = {5, 6, 7, 8, 9, 10};
     private Integer[] min = {0, 10, 20, 30, 40, 50};
+    private Integer[] prices = {10, 15, 20, 25, 30};
 
     public void initialize() {
         hourBox.getItems().addAll(hour);
         minBox.getItems().addAll(min);
+        priceBox.getItems().addAll(prices);
     }
 
     public void addButtonOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
-            trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue());
+            trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue(), priceBox.getValue());
             LocalDate localDate = date.getValue();
             LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
             Train train = new Train();
             train.setRoute(routeText.getText());
             train.setCapacity(100);
             train.setDeparture(localDateTime);
+            train.setPrice(priceBox.getValue());
             trainManager.add(train);
             message1.setText("");
             message2.setText("You have been successfully added train route!");
