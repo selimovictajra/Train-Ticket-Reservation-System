@@ -62,6 +62,11 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
+            <ImageView fitHeight="59.0" fitWidth="43.0" layoutX="135.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/logoT.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane layoutX="192.0" prefHeight="600.0" prefWidth="709.0">
@@ -77,9 +82,10 @@
                                     <TableView fx:id="trainTable" prefHeight="478.0" prefWidth="709.0">
                                       <columns>
                                         <TableColumn fx:id="trainIdColumn" prefWidth="43.0" text="ID" />
-                                        <TableColumn fx:id="routeColumn" prefWidth="181.0" text="ROUTE" />
-                                          <TableColumn fx:id="departureColumn" prefWidth="181.0" text="DEPARTURE" />
-                                          <TableColumn fx:id="capacityColumn" prefWidth="181.0" text="CAPACITY" />
+                                        <TableColumn fx:id="routeColumn" prefWidth="165.0" text="ROUTE" />
+                                          <TableColumn fx:id="departureColumn" prefWidth="165.0" text="DEPARTURE" />
+                                          <TableColumn fx:id="capacityColumn" prefWidth="165.0" text="CAPACITY" />
+                                          <TableColumn fx:id="priceColumn" prefWidth="168.80001220703127" text="PRICE" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -109,9 +115,8 @@
                                     <TableView fx:id="reservationTable" prefHeight="479.0" prefWidth="709.0">
                                       <columns>
                                         <TableColumn fx:id="ridColumn" prefWidth="43.0" text="ID" />
-                                        <TableColumn fx:id="priceColumn" prefWidth="171.0" text="PRICE" />
-                                          <TableColumn fx:id="trainColumn" prefWidth="247.0" text="TRAIN" />
-                                          <TableColumn fx:id="userColumn" prefWidth="247.0" text="USER" />
+                                          <TableColumn fx:id="trainColumn" prefWidth="330.0" text="TRAIN" />
+                                          <TableColumn fx:id="userColumn" prefWidth="340.0" text="USER" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -122,6 +127,11 @@
                   </TabPane>
                </top>
             </BorderPane>
+            <Label layoutX="14.0" layoutY="39.0" prefHeight="19.0" prefWidth="549.0" text="Here you can view all train routes, users and reservations.">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
          </children></Pane>
    </children>
 </Pane>
