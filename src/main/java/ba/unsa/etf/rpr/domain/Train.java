@@ -14,6 +14,7 @@ public class Train implements Idable {
     private String route;
     private LocalDateTime departure;
     private int capacity;
+    private int price;
 
     public int getId() {
         return id;
@@ -47,6 +48,14 @@ public class Train implements Idable {
         this.capacity = capacity;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Trains{" +
@@ -54,6 +63,7 @@ public class Train implements Idable {
                 ", route='" + route + '\'' +
                 ", departure=" + departure +
                 ", capacity=" + capacity +
+                ", price=" + price +
                 '}';
     }
 
@@ -67,6 +77,6 @@ public class Train implements Idable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, route, departure, capacity);
+        return Objects.hash(id, route, departure, capacity, price);
     }
 }

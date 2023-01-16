@@ -8,7 +8,6 @@ import java.util.Objects;
  */
 public class Reservation implements Idable {
     private int id;
-    private int price;
     private User user;
     private Train train;
 
@@ -18,14 +17,6 @@ public class Reservation implements Idable {
 
     public void setId(int reservation_id) {
         this.id = reservation_id;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public User getUser() {
@@ -48,7 +39,6 @@ public class Reservation implements Idable {
     public String toString() {
         return "Reservations{" +
                 "reservation_id=" + id +
-                ", price=" + price +
                 ", u=" + user +
                 ", t=" + train +
                 '}';
@@ -64,6 +54,6 @@ public class Reservation implements Idable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price, user, train);
+        return Objects.hash(id, user, train);
     }
 }
