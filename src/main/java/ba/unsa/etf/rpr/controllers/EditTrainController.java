@@ -34,12 +34,15 @@ public class EditTrainController {
     @FXML
     private ChoiceBox<Integer> minBox;
     @FXML
+    private ChoiceBox<Integer> priceBox;
+    @FXML
     private Label message1;
     @FXML
     private Label message2;
     TrainManager trainManager = new TrainManager();
     private Integer[] hour = {5, 6, 7, 8, 9, 10};
     private Integer[] min = {0, 10, 20, 30, 40, 50};
+    private Integer[] prices = {10, 15, 20, 25, 30};
 
     public void initialize() {
         try {
@@ -51,6 +54,7 @@ public class EditTrainController {
             routeBox.getItems().addAll(trainIds);
             hourBox.getItems().addAll(hour);
             minBox.getItems().addAll(min);
+            priceBox.getItems().addAll(prices);
             routeBox.getSelectionModel().selectedItemProperty().addListener((observable, oldvalue, newvalue) -> {
                 Train train1 = null;
                 try {
@@ -61,6 +65,7 @@ public class EditTrainController {
                     LocalTime localTime = localDateTime.toLocalTime();
                     hourBox.setValue(localTime.getHour());
                     minBox.setValue(localTime.getMinute());
+                    priceBox.setValue(train1.getPrice());
                 }
                 catch (TrainException e) {
                     throw new RuntimeException(e);
@@ -76,7 +81,7 @@ public class EditTrainController {
     public void editButtonOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             trainManager.validateDeleteFields(routeBox.getValue());
-            trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue());
+            trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue(), priceBox.getValue());
             LocalDate localDate = date.getValue();
             LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
             Train train = new Train();
@@ -84,6 +89,7 @@ public class EditTrainController {
             train.setCapacity(100);
             train.setRoute(routeText.getText());
             train.setDeparture(localDateTime);
+            train.setPrice(priceBox.getValue());
             trainManager.update(train);
             message1.setText("");
             message2.setText("You have been successfully edited train route with id " + routeBox.getValue() + "!");
