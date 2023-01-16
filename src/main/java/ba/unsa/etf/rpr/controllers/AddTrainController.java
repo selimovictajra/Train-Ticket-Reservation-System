@@ -46,6 +46,7 @@ public class AddTrainController {
     public void addButtonOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue(), priceBox.getValue());
+            trainManager.validateDuplicate(routeText.getText(), date.getValue().atTime(hourBox.getValue(), minBox.getValue()));
             LocalDate localDate = date.getValue();
             LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
             Train train = new Train();
