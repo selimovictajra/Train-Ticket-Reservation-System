@@ -48,6 +48,7 @@ public class UserYBController {
             ReservationDaoSQLImpl reservationDaoSQL = new ReservationDaoSQLImpl();
             routeColumn.setCellValueFactory(new PropertyValueFactory<>("route"));
             departureColumn.setCellValueFactory(new PropertyValueFactory<>("departure"));
+            priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
             bookingTable.setItems(FXCollections.observableList(reservationDaoSQL.getByUser(model.getUser().getId())));
             bookingTable.refresh();
         }
