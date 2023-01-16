@@ -91,5 +91,10 @@
             <Font size="13.0" />
          </font>
       </Label>
+      <ImageView fitHeight="59.0" fitWidth="43.0" layoutX="135.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/logoT.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
