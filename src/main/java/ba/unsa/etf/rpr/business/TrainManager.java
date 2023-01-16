@@ -4,6 +4,9 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 public class TrainManager {
@@ -50,5 +53,20 @@ public class TrainManager {
 
     public void validateDeleteFields(Integer id) throws TrainException {
         if (id == null) throw new TrainException("Id field must be filled in!");
+    }
+
+    public void validateDuplicate(String route, LocalDateTime localDateTime) throws TrainException {
+        try {
+            List<Train> trains = DaoFactory.trainDao().getAll();
+            for (int i = 0; i < trains.size(); i++) {
+                Train train = trains.get(i);
+                if (train.getRoute().equals(route) && train.getDeparture().equals(localDateTime)) {
+                    throw new TrainException("This train route already exists!");
+                }
+            }
+        }
+        catch (Exception e) {
+            throw new TrainException(e.getMessage());
+        }
     }
 }
