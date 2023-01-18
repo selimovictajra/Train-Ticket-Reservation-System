@@ -9,7 +9,16 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+/**
+ * This is a Java class called "ReservationManager" that provides a set of methods for managing Reservation objects.
+ * @author Tajra Selimovic
+ */
 public class ReservationManager {
+    /**
+     * Deletes reservation from database table Reservations
+     * @param id int
+     * @throws TrainException in case of problem with database
+     */
     public void delete (int id) throws TrainException {
         try {
             DaoFactory.reservationDao().delete(id);
@@ -21,21 +30,53 @@ public class ReservationManager {
             throw e;
         }
     }
-
+    /**
+     * Updates reservation in database table Reservation
+     * @param cat Reservation
+     * @return Reservation
+     * @throws TrainException in case of problems with database
+     */
     public Reservation update(Reservation cat) throws TrainException {
         return DaoFactory.reservationDao().update(cat);
     }
-
+    /**
+     * Fetches all reservations from the database and stores them in the list of reservations
+     * @return List of Reservations
+     * @throws TrainException in case of problems with database
+     */
     public List<Reservation> getAll() throws TrainException {
         return DaoFactory.reservationDao().getAll();
     }
 
+    /**
+     * Checks if book fields are filled in
+     * @param route String
+     * @param date LocalDate
+     * @param time LocalTime
+     * @throws TrainException in case of problems with database
+     */
     public void validateBookFields(String route, LocalDate date, LocalTime time) throws TrainException {
         if(route.isEmpty() || date == null || time == null) {
             throw new TrainException("All fields must be filled in!");
         }
     }
+    /**
+     * Adds Reservation in database table Reservations
+     * @param r Reservation
+     * @return Reservation
+     * @throws TrainException in case of problems with database
+     */
     public Reservation add(Reservation r) throws TrainException {
         return DaoFactory.reservationDao().add(r);
+    }
+
+    /**
+     * Fetches all reservations from database with given idUser
+     * @param idUser int
+     * @return List of Trains
+     * @throws TrainException in case of problems with database
+     */
+    public List<Train> getByUser(int idUser) throws TrainException {
+        return DaoFactory.reservationDao().getByUser(idUser);
     }
 }
