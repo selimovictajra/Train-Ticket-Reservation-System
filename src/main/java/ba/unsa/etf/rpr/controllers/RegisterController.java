@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
@@ -20,6 +21,7 @@ import java.sql.*;
 import java.util.Objects;
 
 public class RegisterController {
+    private UserManager userManager = new UserManager();
     @FXML
     private Button closeButton;
     @FXML
@@ -52,8 +54,7 @@ public class RegisterController {
         }
         else{
             messageLabel1.setText("");
-            UserDaoSQLImpl userDaoSQL = new UserDaoSQLImpl();
-            boolean usernameFound = userDaoSQL.findUsername(usernameTextField.getText());
+            boolean usernameFound = userManager.findUsername(usernameTextField.getText());
             if (usernameFound) {
                 messageLabel4.setText("Username already taken.");
             } else {
@@ -61,7 +62,6 @@ public class RegisterController {
             }
             boolean password_ok = true;
             if (passwordField.getText().equals(conpassField.getText())) {
-                password_ok = true;
                 messageLabel3.setText("");
             }
             else {
@@ -74,7 +74,7 @@ public class RegisterController {
                 user.setRole(false);
                 user.setPassword(passwordField.getText());
                 user.setName(fullnameTextFiled.getText());
-                userDaoSQL.add(user);
+                userManager.add(user);
                 messageLabel2.setText("You have been successfully registered!");
             }
             else{
