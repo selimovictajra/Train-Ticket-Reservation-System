@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- *
+ * Class that contains information about trains made for train tickets.
  * @author Tajra Selimovic
  */
 public class Train implements Idable {
