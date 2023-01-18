@@ -26,9 +26,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class UserYBController {
-
-    private final TrainManager trainManager = new TrainManager();
-    private final UserManager userManager = new UserManager();
     private final ReservationManager reservationManager = new ReservationManager();
     @FXML
     public TableView<Train> bookingTable;
@@ -45,11 +42,10 @@ public class UserYBController {
         try {
             Model model = Model.getInstance();
             userLabel.setText(model.getUser().getName());
-            ReservationDaoSQLImpl reservationDaoSQL = new ReservationDaoSQLImpl();
             routeColumn.setCellValueFactory(new PropertyValueFactory<>("route"));
             departureColumn.setCellValueFactory(new PropertyValueFactory<>("departure"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-            bookingTable.setItems(FXCollections.observableList(reservationDaoSQL.getByUser(model.getUser().getId())));
+            bookingTable.setItems(FXCollections.observableList(reservationManager.getByUser(model.getUser().getId())));
             bookingTable.refresh();
         }
         catch (Exception e) {
