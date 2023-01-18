@@ -28,9 +28,9 @@ public class UserBookingController {
     private ChoiceBox<LocalDate> dateBox;
     @FXML
     private ChoiceBox<LocalTime> timeBox;
-    private ArrayList<String> routes = new ArrayList<String>();
-    private ArrayList<LocalDate> dateL = new ArrayList<LocalDate>();
-    private ArrayList<LocalTime> timeL = new ArrayList<LocalTime>();
+    private final ArrayList<String> routes = new ArrayList<String>();
+    private final ArrayList<LocalDate> dateL = new ArrayList<LocalDate>();
+    private final ArrayList<LocalTime> timeL = new ArrayList<LocalTime>();
     @FXML
     private Label userLabel;
     @FXML
@@ -67,8 +67,7 @@ public class UserBookingController {
                     for (Train value : trains) {
                         if (value.getRoute().equals(routeBox.getValue())) {
                             //System.out.println("usao");
-                            Train train = value;
-                            LocalDateTime localDateTime = train.getDeparture();
+                            LocalDateTime localDateTime = value.getDeparture();
                             dateL.add(localDateTime.toLocalDate());
                             //timeL.add(localDateTime.toLocalTime());
                         }
@@ -126,8 +125,7 @@ public class UserBookingController {
             LocalDateTime localDateTime = localDate.atTime(timeBox.getValue());
             List<Train> trains = trainManager.getAll();
             System.out.println("ok");
-            for (int i = 0; i < trains.size(); i++) {
-                Train train1 = trains.get(i);
+            for (Train train1 : trains) {
                 if (train1.getRoute().equals(routeBox.getValue()) && train1.getDeparture().equals(localDateTime)) {
                     //train.setId(train1.getId());
                     reservation.setTrain(train1);
