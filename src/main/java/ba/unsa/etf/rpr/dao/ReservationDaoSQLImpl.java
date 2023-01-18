@@ -34,7 +34,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
         item.put("train_id", object.getTrain().getId());
         return item;
     }
-
+    @Override
     public List<Train> getByUser(int idUser) throws TrainException {
         try {
             List<Train> trains = new ArrayList<>();
