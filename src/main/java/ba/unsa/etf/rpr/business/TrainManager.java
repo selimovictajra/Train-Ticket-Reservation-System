@@ -3,18 +3,28 @@ package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.exceptions.TrainException;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
+/**
+ * This is a Java class called "TrainManager" that provides a set of methods for managing Train objects.
+ * @author Tajra Selimovic
+ */
 public class TrainManager {
-
+    /**
+     * Updates train in database table Trains
+     * @param cat Train
+     * @return Train
+     * @throws TrainException in case of problem with database
+     */
     public Train update(Train cat) throws TrainException {
         return DaoFactory.trainDao().update(cat);
     }
-
+    /**
+     * Deletes train from database table Trains
+     * @param trainId int
+     * @throws TrainException in case of problem with database
+     */
     public void delete(int trainId) throws TrainException {
         try{
             DaoFactory.trainDao().delete(trainId);
@@ -26,7 +36,11 @@ public class TrainManager {
             throw e;
         }
     }
-
+    /**
+     * Fetches all trains from the database and stores them in the list of trains
+     * @return List of Trains
+     * @throws TrainException in case of problems with database
+     */
     public List<Train> getAll() throws TrainException {
         return DaoFactory.trainDao().getAll();
     }
@@ -42,19 +56,40 @@ public class TrainManager {
             throw new TrainException("All fields must be filled in!");
         }
     }
-
+    /**
+     * Adds train in database table Trains
+     * @param train Train
+     * @return Train
+     * @throws TrainException in case of problems with database
+     */
     public Train add(Train train) throws TrainException {
         return DaoFactory.trainDao().add(train);
     }
-
+    /**
+     * Fetches Train with the given id
+     * @param id Integer
+     * @return Train
+     * @throws TrainException in case of problems with database
+     */
     public  Train getById(int id) throws TrainException {
         return DaoFactory.trainDao().getById(id);
     }
 
+    /**
+     * Checks if delete field is filled in
+     * @param id Integer
+     * @throws TrainException in case of problems with database
+     */
     public void validateDeleteFields(Integer id) throws TrainException {
         if (id == null) throw new TrainException("Id field must be filled in!");
     }
 
+    /**
+     * Checks if train route already exists
+     * @param route String
+     * @param localDateTime LocalDateTime
+     * @throws TrainException in case of problems with database
+     */
     public void validateDuplicate(String route, LocalDateTime localDateTime) throws TrainException {
         try {
             List<Train> trains = DaoFactory.trainDao().getAll();
