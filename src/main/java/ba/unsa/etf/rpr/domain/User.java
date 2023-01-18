@@ -3,7 +3,7 @@ package ba.unsa.etf.rpr.domain;
 import java.util.Objects;
 
 /**
- *
+ * Class that contains information about users made for train tickets.
  * @author Tajra Selimovic
  */
 public class User implements Idable {
