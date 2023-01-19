@@ -6,15 +6,26 @@ import ba.unsa.etf.rpr.exceptions.TrainException;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * Abstract class that implements core DAO CRUD methods for every entity
+ * @author Tajra Selimovic
+ */
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private static Connection connection;
-    private String tableName;
-
+    private final String tableName;
+    /**
+     * The AbstractDao constructor creates an instance of AbstractDao and sets the table name for the corresponding DAO.
+     * It also creates a connection to the database if one has not been created yet.
+     * @param tableName The name of the table corresponding to the DAO.
+     */
     public AbstractDao(String tableName) {
         this.tableName = tableName;
         if(connection == null) createConnection();
     }
 
+    /**
+     * Creates a connection to the database
+     */
     private static void createConnection() {
         if(AbstractDao.connection == null) {
             try {
@@ -35,37 +46,6 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         return AbstractDao.connection;
     }
 
-    public void setConnection(Connection connection) {
-        if(AbstractDao.connection != null) {
-            try {
-                AbstractDao.connection.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        AbstractDao.connection = connection;
-    }
-
-    public void removeConnection(){
-        if(this.connection!=null) {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                //throw new RuntimeException(e);
-                e.printStackTrace();
-                System.out.println("REMOVE CONNECTION METHOD ERROR: Unable to close connection on database");
-            }
-        }
-    }
-
-    public String getTableName() {
-        return tableName;
-    }
-
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
-
     /**
      * Method for mapping ResultSet into Object
      * @param rs - result set from database
@@ -80,15 +60,25 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * @return key, value sorted map of object
      */
     public abstract Map<String, Object> object2row(T object);
-
+    /**
+     * get entity from database base on ID
+     * @param id primary key of entity
+     * @return Entity from database
+     */
     public T getById(int id) throws TrainException {
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
     }
-
+    /**
+     * Lists all entities from database. WARNING: Very slow operation because it reads all records.
+     * @return List of entities from database
+     */
     public List<T> getAll() throws TrainException {
         return executeQuery("SELECT * FROM "+ tableName, null);
     }
-
+    /**
+     * Hard delete of item from database with given id
+     * @param id - primary key of entity
+     */
     public void delete(int id) throws TrainException {
         String sql = "DELETE FROM "+tableName+" WHERE id = ?";
         try{
@@ -99,7 +89,11 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             throw new TrainException(e.getMessage(), e);
         }
     }
-
+    /**
+     * Fully updates entity in database based on id (primary) match.
+     * @param item - bean to be updated. id must be populated
+     * @return updated version of bean
+     */
     public T add(T item) throws TrainException{
         Map<String, Object> row = object2row(item);
         Map.Entry<String, String> columns = prepareInsertParts(row);
@@ -129,7 +123,11 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             throw new TrainException(e.getMessage(), e);
         }
     }
-
+    /**
+     * Fully updates entity in database based on id (primary) match.
+     * @param item - bean to be updated. id must be populated
+     * @return updated version of bean
+     */
     public T update(T item) throws TrainException{
         Map<String, Object> row = object2row(item);
         String updateColumns = prepareUpdateParts(row);
