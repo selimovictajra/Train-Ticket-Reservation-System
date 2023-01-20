@@ -135,6 +135,7 @@ public class UserBookingController {
             //reservation building
             reservation.setUser(user);
             reservationManager.add(reservation);
+            model.setReservation(reservation);
             message1.setText("");
             message2.setText("You have been successfully booked train ticket!");
             priceLabel.setText("Price: " + reservation.getTrain().getPrice());
