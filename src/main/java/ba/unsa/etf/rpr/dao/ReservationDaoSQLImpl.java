@@ -62,11 +62,32 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
             List<Train> trains = new ArrayList<>();
             ReservationManager reservationManager = new ReservationManager();
             List<Reservation> reservations = new ArrayList<>(reservationManager.getAll());
-            for (int i = 0; i < reservations.size(); i++) {
-                Reservation reservation = reservations.get(i);
+            for (Reservation reservation : reservations) {
                 if (reservation.getUser().getId() == idUser) trains.add(reservation.getTrain());
             }
             return trains;
+        }
+        catch (Exception e) {
+            throw new TrainException(e.getMessage(), e);
+        }
+    }
+    /**
+     * Finds a Reservation for the given idTrain and idUser
+     * @param idTrain The id of the train for which the reservation is being searched.
+     * @param idUser The id of the user for which the reservation is being searched.
+     * @return The Reservation object that matches the given train id and user id.
+     * @throws TrainException If there is an error searching for the reservation or if the reservation does not exist.
+     */
+    @Override
+    public Reservation getByTrainId(int idTrain, int idUser) throws TrainException {
+        try {
+            Reservation reservation1 = new Reservation();
+            ReservationManager reservationManager = new ReservationManager();
+            List<Reservation> reservations = new ArrayList<>(reservationManager.getAll());
+            for (Reservation reservation : reservations) {
+                if (reservation.getUser().getId() == idUser && reservation.getTrain().getId() == idTrain) reservation1= reservation;
+            }
+            return reservation1;
         }
         catch (Exception e) {
             throw new TrainException(e.getMessage(), e);
