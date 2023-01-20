@@ -1,10 +1,8 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.UserManager;
-import ba.unsa.etf.rpr.dao.UserDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,13 +13,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.sql.*;
 import java.util.Objects;
 
+/**
+ * This class is a JavaFX controller for the registration screen.
+ * It contains methods for handling button events for the register, login, and close buttons.
+ * It also has methods for checking the entered registration information and adding a new user to the database.
+ * @author Tajra Selimovic
+ */
 public class RegisterController {
-    private UserManager userManager = new UserManager();
+    private final UserManager userManager = new UserManager();
     @FXML
     private Button closeButton;
     @FXML
@@ -41,12 +42,21 @@ public class RegisterController {
     @FXML
     private Label messageLabel4;
 
-
+    /**
+     * Handles the action for the close button. Closes the current window.
+     * @param ae the action event
+     */
     public void closeButtonOnAction(ActionEvent ae) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Handles the action for the register button.
+     * Checks the entered registration information and adds a new user to the database.
+     * @param ae the action event
+     * @throws TrainException in case of problems
+     */
     public void registerButtonOnAction(ActionEvent ae) throws TrainException {
         if (usernameTextField.getText().isEmpty() || passwordField.getText().isEmpty() || fullnameTextFiled.getText().isEmpty() || conpassField.getText().isEmpty()) {
             messageLabel1.setText("Please fill the empty fields.");
@@ -82,7 +92,12 @@ public class RegisterController {
             }
         }
     }
-
+    /**
+     * Handles the action for the login button.
+     * Navigates to the login page.
+     * @param ae the action event
+     * @throws Exception in case of problems
+     */
     public void loginButtonOnAction(ActionEvent ae) throws Exception {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
