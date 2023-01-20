@@ -18,4 +18,12 @@ public interface ReservationDao extends Dao<Reservation> {
      * @throws TrainException in case of problems with database
      */
     public List<Train> getByUser(int idUser) throws TrainException;
+    /**
+     * Finds a Reservation for the given idTrain and idUser
+     * @param idTrain The id of the train for which the reservation is being searched.
+     * @param idUser The id of the user for which the reservation is being searched.
+     * @return The Reservation object that matches the given train id and user id.
+     * @throws TrainException If there is an error searching for the reservation or if the reservation does not exist.
+     */
+    public Reservation getByTrainId(int idTrain, int idUser) throws TrainException;
 }
