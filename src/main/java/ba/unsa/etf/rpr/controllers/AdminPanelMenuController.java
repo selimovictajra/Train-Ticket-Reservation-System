@@ -27,6 +27,13 @@ import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * This class serves as a controller for the AdminPanelMenu.fxml file. It manages the functionality of the admin panel menu,
+ * including displaying and refreshing data for the train, user, and reservation tables.
+ *
+ * @author Tajra Selimovic
+ */
+
 public class AdminPanelMenuController {
     private final TrainManager trainManager = new TrainManager();
     private final UserManager userManager = new UserManager();
@@ -68,6 +75,10 @@ public class AdminPanelMenuController {
     @FXML
     public TableColumn<Reservation, String> userColumn;
 
+    /**
+     * The initialize method is responsible for initializing the TableViews for trains, users, and reservations, as well as
+     * setting the cell value factories for each column in the TableViews.
+     */
     @FXML
     public void initialize() {
         trainIdColumn.setCellValueFactory(new PropertyValueFactory<Train, String>("id"));
@@ -87,6 +98,9 @@ public class AdminPanelMenuController {
         refreshReservations();
     }
 
+    /**
+     * The method refreshTrains is used to refresh the trainTable with the updated data from the trainManager.
+     */
     void refreshTrains() {
         try {
             trainTable.setItems(FXCollections.observableList(trainManager.getAll()));
@@ -95,7 +109,9 @@ public class AdminPanelMenuController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * The method refreshUsers is used to refresh the userTable with the updated data from the userManager.
+     */
     void refreshUsers() {
         try {
             usersTable.setItems(FXCollections.observableList(userManager.getAll()));
@@ -104,7 +120,9 @@ public class AdminPanelMenuController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * The method refreshReservations is used to refresh the reservationTable with the updated data from the reservationManager.
+     */
     void refreshReservations() {
         try {
             reservationTable.setItems(FXCollections.observableList(reservationManager.getAll()));
@@ -113,7 +131,12 @@ public class AdminPanelMenuController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * The homeTrainLinkOnAction() method is called when the user clicks the "Home" link.
+     * Switches the user to the home window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/adminpanelhome.fxml")));
@@ -127,6 +150,12 @@ public class AdminPanelMenuController {
             exception.getCause();
         }
     }
+    /**
+     * The deleteTrainLinkOnAction() method is called when the user clicks the "Delete" link.
+     * Switches the user to the delete Train window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void deleteTrainOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/deleteLink.fxml")));
@@ -140,6 +169,12 @@ public class AdminPanelMenuController {
             exception.getCause();
         }
     }
+    /**
+     * The addTrainLinkOnAction() method is called when the user clicks the "Add" link.
+     * Switches the user to the add Train window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void addTrainLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/addLink.fxml")));
@@ -153,6 +188,12 @@ public class AdminPanelMenuController {
             exception.getCause();
         }
     }
+    /**
+     * The editTrainLinkOnAction() method is called when the user clicks the "Edit" link.
+     * Switches the user to the edit Train window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void editTrainLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/editLink.fxml")));
@@ -166,6 +207,12 @@ public class AdminPanelMenuController {
             exception.getCause();
         }
     }
+    /**
+     * The logoutLinkOnAction() method is called when the user clicks the "Logout" link.
+     * Switches the user to the login window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void logoutLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
