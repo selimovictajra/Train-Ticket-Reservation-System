@@ -17,6 +17,15 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+/**
+ * AddTrainController class is a JavaFX controller class for adding new trains to database.
+ * It has several FXML-annotated fields for user input, including a text field for the train route, date picker for the departure date,
+ * and choice boxes for the departure time (hour and minute) and price.
+ * The class also has two label fields for displaying error messages to the user.
+ *
+ * @author Tajra Selimovic
+ */
+
 public class AddTrainController {
     @FXML
     private TextField routeText;
@@ -37,12 +46,21 @@ public class AddTrainController {
     private Integer[] min = {0, 10, 20, 30, 40, 50};
     private Integer[] prices = {10, 15, 20, 25, 30};
 
+    /**
+     * Sets up the available options for the user to select from when entering the train's departure time and price.
+     */
     public void initialize() {
         hourBox.getItems().addAll(hour);
         minBox.getItems().addAll(min);
         priceBox.getItems().addAll(prices);
     }
 
+    /**
+     * Handles the action when the "Add" button is clicked.
+     * Adds train route in database table Trains
+     * @param actionEvent the event that triggers the action
+     * @throws TrainException if the train is invalid or already exists
+     */
     public void addButtonOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue(), priceBox.getValue());
@@ -63,6 +81,13 @@ public class AddTrainController {
             message2.setText("");
         }
     }
+
+    /**
+     * The homeTrainLinkOnAction() method is called when the user clicks the "Home" link.
+     * Switches the user to the home window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/adminpanelhome.fxml")));
@@ -76,6 +101,12 @@ public class AddTrainController {
             e.getCause();
         }
     }
+    /**
+     * The menuTrainLinkOnAction() method is called when the user clicks the "Menu" link.
+     * Switches the user to the menu window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void menuLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/adminpanelmenu.fxml")));
@@ -89,6 +120,12 @@ public class AddTrainController {
             e.getCause();
         }
     }
+    /**
+     * The deleteTrainLinkOnAction() method is called when the user clicks the "Delete" link.
+     * Switches the user to the delete Train window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void deleteTrainLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/deleteLink.fxml")));
@@ -102,6 +139,12 @@ public class AddTrainController {
             e.getCause();
         }
     }
+    /**
+     * The editTrainLinkOnAction() method is called when the user clicks the "Edit" link.
+     * Switches the user to the edit Train window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void editTrainLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/editLink.fxml")));
@@ -115,6 +158,12 @@ public class AddTrainController {
             exception.getCause();
         }
     }
+    /**
+     * The logoutLinkOnAction() method is called when the user clicks the "Logout" link.
+     * Switches the user to the login window.
+     * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
+     * @param actionEvent the event that triggers the action
+     */
     public void logoutLinkOnAction(javafx.event.ActionEvent actionEvent) {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
