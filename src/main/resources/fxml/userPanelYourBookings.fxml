@@ -56,13 +56,14 @@
             <Image url="@../Images/train3.PNG" />
          </image>
       </ImageView>
-      <Pane layoutY="191.0" prefHeight="409.0" prefWidth="650.0">
+      <Pane fx:id="YBPane" layoutY="191.0" prefHeight="409.0" prefWidth="650.0">
          <children>
             <TableView fx:id="bookingTable" prefHeight="409.0" prefWidth="650.0">
               <columns>
-                <TableColumn fx:id="routeColumn" prefWidth="217.0" text="ROUTE" />
-                <TableColumn fx:id="departureColumn" prefWidth="217.0" text="DEPARTURE" />
-                  <TableColumn fx:id="priceColumn" prefWidth="212.80007934570312" text="PRICE" />
+                <TableColumn fx:id="routeColumn" prefWidth="162.5" text="ROUTE" />
+                <TableColumn fx:id="departureColumn" prefWidth="162.5" text="DEPARTURE" />
+                  <TableColumn fx:id="priceColumn" prefWidth="162.5" text="PRICE" />
+                  <TableColumn fx:id="ticketColumn" prefWidth="162.5" text="TICKET" />
               </columns>
             </TableView>
          </children>
