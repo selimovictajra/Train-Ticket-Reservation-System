@@ -4,6 +4,10 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -98,5 +102,13 @@ public class UserManager {
      */
     public boolean findUsername(String usernameField) throws TrainException {
         return DaoFactory.userDao().findUsername(usernameField);
+    }
+    /**
+     * Returns the number of users from database
+     * @return Integer
+     * @throws TrainException in case of problems
+     */
+    public int numberOfUsers() throws TrainException {
+        return DaoFactory.userDao().numberOfUsers();
     }
 }
