@@ -2,13 +2,10 @@ package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.ReservationManager;
 import ba.unsa.etf.rpr.business.TrainManager;
-import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.controllers.components.ButtonCellFactory;
-import ba.unsa.etf.rpr.dao.ReservationDaoSQLImpl;
 import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.exceptions.TrainException;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,13 +18,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import javax.swing.text.TabableView;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class is a JavaFX controller for the user's "Your Bookings" screen.
+ * It contains methods for displaying the user's booked trains in a table, handling button events for the logout, home, and bookings links, and refreshing the table of trains.
+ * It also has a method for initializing the user's name on the screen.
+ * @author Tajra Selimovic
+ */
 public class UserYBController {
     @FXML
     Pane YBPane;
@@ -43,11 +42,13 @@ public class UserYBController {
     public TableColumn<Train, Integer> ticketColumn;
     @FXML
     private Label userLabel;
-    private Train train;
-    private Reservation reservation;
     private final TrainManager trainManager = new TrainManager();
     private final ReservationManager reservationManager = new ReservationManager();
 
+    /**
+     * Initializes the user's name on the screen and sets the cell value factories and cell factories for the table columns.
+     * Also calls the refreshTrains method to update the table with the user's booked trains.
+     */
     public void initialize() {
         Model model = Model.getInstance();
         userLabel.setText(model.getUser().getName());
@@ -62,6 +63,9 @@ public class UserYBController {
         refreshTrains();
     }
 
+    /**
+     * Refreshes the table of trains by getting the reservations made by the logged-in user and updating the table's items.
+     */
     void refreshTrains() {
         try {
             Model model = Model.getInstance();
@@ -74,11 +78,16 @@ public class UserYBController {
         }
     }
 
+    /**
+     * Handles the action for the view button.
+     * Opens the "View Ticket" screen and sets the selected train and reservation in the model.
+     * @param trainId the id of the selected train
+     */
     public void viewButtonOnAction(Integer trainId) {
         try {
             Model model = Model.getInstance();
-            train = trainManager.getById(trainId);
-            reservation = reservationManager.getByTrainId(train.getId(), model.getUser().getId());
+            Train train = trainManager.getById(trainId);
+            Reservation reservation = reservationManager.getByTrainId(train.getId(), model.getUser().getId());
             model.setTrain(train);
             model.setReservation(reservation);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/viewTicket.fxml"));
@@ -97,7 +106,12 @@ public class UserYBController {
             e.getCause();
         }
     }
-
+    /**
+     * Handles the action for the logout link.
+     * Navigates to the login page.
+     * @param actionEvent the action event
+     * @throws TrainException in case of problems
+     */
     public void logoutLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
@@ -111,6 +125,12 @@ public class UserYBController {
             e.getCause();
         }
     }
+    /**
+     * Handles the action for the home link.
+     * Navigates to the Home page.
+     * @param actionEvent the action event
+     * @throws TrainException in case of problems
+     */
     public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelHome.fxml")));
@@ -124,6 +144,12 @@ public class UserYBController {
             e.getCause();
         }
     }
+    /**
+     * Handles the action for the booking link.
+     * Navigates to the Booking page.
+     * @param actionEvent the action event
+     * @throws TrainException in case of problems
+     */
     public void bookingLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelBooking.fxml")));
