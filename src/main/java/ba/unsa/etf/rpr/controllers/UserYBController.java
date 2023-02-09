@@ -19,6 +19,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -44,6 +46,7 @@ public class UserYBController {
     private Label userLabel;
     private final TrainManager trainManager = new TrainManager();
     private final ReservationManager reservationManager = new ReservationManager();
+    private final List<Stage> stageList = new ArrayList<>();
 
     /**
      * Initializes the user's name on the screen and sets the cell value factories and cell factories for the table columns.
@@ -95,6 +98,7 @@ public class UserYBController {
             stage.setResizable(false);
             stage.setScene(new Scene(loader.load()));
             stage.show();
+            stageList.add(stage);
             stage.setOnHiding(event -> {
                 ((Stage)YBPane.getScene().getWindow()).show();
                 refreshTrains();
@@ -114,6 +118,7 @@ public class UserYBController {
      */
     public void logoutLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
+            for(Stage s : stageList)  s.close();
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
             Stage stage = (Stage) ((javafx.scene.Node)actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -133,6 +138,7 @@ public class UserYBController {
      */
     public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
+            for(Stage s : stageList)  s.close();
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelHome.fxml")));
             Stage stage = (Stage) ((javafx.scene.Node)actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -152,6 +158,7 @@ public class UserYBController {
      */
     public void bookingLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
+            for(Stage s : stageList)  s.close();
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelBooking.fxml")));
             Stage stage = (Stage) ((javafx.scene.Node)actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
