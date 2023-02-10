@@ -58,7 +58,7 @@ public class UserYBController {
         routeColumn.setCellValueFactory(new PropertyValueFactory<>("route"));
         departureColumn.setCellValueFactory(new PropertyValueFactory<>("departure"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-        ticketColumn.setCellValueFactory(new PropertyValueFactory<Train, Integer>("id"));
+        ticketColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         ticketColumn.setCellFactory(new ButtonCellFactory(editEvent -> {
             int trainId = Integer.parseInt(((Button)editEvent.getSource()).getUserData().toString());
             viewButtonOnAction(trainId);
