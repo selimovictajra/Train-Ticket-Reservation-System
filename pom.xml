@@ -100,7 +100,6 @@
                         <artifactId>javafx-maven-plugin</artifactId>
                         <version>0.0.1</version>
                         <configuration>
-                            <executable>C:\Users\LENOVO\.jdks\openjdk-19.0.1\bin\java</executable>
                             <mainClass>ba.unsa.etf.rpr.AppFX</mainClass>
                         </configuration>
                     </plugin>
