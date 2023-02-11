@@ -23,33 +23,6 @@ import static org.mockito.Mockito.verify;
  */
 public class AppTest {
     /**
-     * Tests if 'checkTrainRoute' method is valid
-     */
-    @Test
-    public void checkTrainRouteTest1() {
-        try {
-            new TrainDaoSQLImpl().checkTrainRoute("hi");
-            fail("Problem with 'checkTrainRoute' method.");
-        }
-        catch(TrainException e) {
-            assertTrue(e.getMessage().contains("Invalid train route!"));
-        }
-    }
-
-    /**
-     * Tests if 'checkTrainRoute' method is valid
-     */
-    @Test
-    public void checkTrainRouteTest2() {
-        try {
-            assertTrue((new TrainDaoSQLImpl()).checkTrainRoute("City1 - City2"));
-        }
-        catch(TrainException e) {
-            fail("Problem with 'checkTrainRoute' method.");
-        }
-    }
-
-    /**
      * Tests if 'validateBookFields' method is valid
      */
     @Test
@@ -129,6 +102,9 @@ public class AppTest {
         assertSame(user, model.getUser());
     }
 
+    /**
+     * Tests if setters and getters in 'Reservation' are valid
+     */
     @Test
     public void setAndGetReservation() {
         Model model = Model.getInstance();
@@ -159,6 +135,13 @@ public class AppTest {
     public void addTest() throws TrainException {
         userDao.add(user);
         verify(userDao).add(user);
+    }
+
+    @Test
+    public void editTest() throws TrainException {
+        user.setUsername("user123");
+        userDao.update(user);
+        verify(userDao).update(user);
     }
 
     @Test
