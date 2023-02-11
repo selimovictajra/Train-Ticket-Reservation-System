@@ -93,8 +93,7 @@ public class TrainManager {
     public void validateDuplicate(String route, LocalDateTime localDateTime) throws TrainException {
         try {
             List<Train> trains = DaoFactory.trainDao().getAll();
-            for (int i = 0; i < trains.size(); i++) {
-                Train train = trains.get(i);
+            for (Train train : trains) {
                 if (train.getRoute().equals(route) && train.getDeparture().equals(localDateTime)) {
                     throw new TrainException("This train route already exists!");
                 }

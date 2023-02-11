@@ -1,16 +1,15 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.ReservationManager;
 import ba.unsa.etf.rpr.business.UserManager;
-import ba.unsa.etf.rpr.exceptions.TrainException;
+import ba.unsa.etf.rpr.domain.Reservation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -21,10 +20,13 @@ import java.util.Objects;
 
 public class AdminPanelHomeController {
     UserManager userManager = new UserManager();
+    ReservationManager reservationManager = new ReservationManager();
     @FXML
     public javafx.scene.control.Label usersLabel;
     @FXML
     public javafx.scene.control.Label adminLabel;
+    @FXML
+    public javafx.scene.control.Label profitLabel;
 
     /**
      * The initialize() method is called when the admin panel home page is loaded.
@@ -36,6 +38,12 @@ public class AdminPanelHomeController {
             usersLabel.setText(String.valueOf(num));
             Model model = Model.getInstance();
             adminLabel.setText(model.getUser().getName());
+            List<Reservation> reservations = reservationManager.getAll();
+            int profit = 0;
+            for (Reservation reservation : reservations) {
+                profit = profit + reservation.getTrain().getPrice();
+            }
+            profitLabel.setText(Integer.toString(profit));
         }
         catch(Exception e)  {
             e.printStackTrace();
