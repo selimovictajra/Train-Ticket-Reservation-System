@@ -103,4 +103,13 @@ public class TrainManager {
             throw new TrainException(e.getMessage());
         }
     }
+
+    /**
+     * Checks if the given train route is valid.
+     * @param route The train route to be checked.
+     * @return true if the route is valid, false otherwise.
+     */
+    public boolean checkTrainRoute(String route) throws TrainException {
+        return DaoFactory.trainDao().checkTrainRoute(route);
+    }
 }

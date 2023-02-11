@@ -56,4 +56,15 @@ public class TrainDaoSQLImpl extends AbstractDao<Train> implements TrainDao{
         return item;
     }
 
+    /**
+     * Checks if the given train route is valid.
+     * @param route The train route to be checked.
+     * @return true if the route is valid, false otherwise.
+     */
+    @Override
+    public boolean checkTrainRoute(String route) throws TrainException {
+        if(route.contains(" - ") && route.length() >= 7) return true;
+        else throw new TrainException("Invalid train route!");
+    }
+
 }
