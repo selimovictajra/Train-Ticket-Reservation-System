@@ -4,10 +4,6 @@ import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -19,7 +15,6 @@ public class UserManager {
     /**
      * Deletes user from database table Users
      * @param id int
-     * @return int
      * @throws TrainException in case of problem with database
      */
     public void delete(int id) throws TrainException {
