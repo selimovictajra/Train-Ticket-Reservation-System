@@ -75,10 +75,12 @@ public class App {
         CommandLine cl = commandLineParser.parse(options, args);
 
         if (cl.hasOption(addTrain.getOpt())) {
+            boolean check = false;
             try {
                 TrainManager trainManager = new TrainManager();
                 Train train = new Train();
                 if (trainManager.checkTrainRoute(cl.getArgList().get(0))) {
+                    check = true;
                     train.setRoute(cl.getArgList().get(0));
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                     train.setDeparture(LocalDateTime.parse(cl.getArgList().get(1), formatter));
@@ -88,12 +90,14 @@ public class App {
                     System.out.println("You have been successfully added a train route!");
                 }
             }
-            catch (TrainException e) {
-                System.out.println("Something went wrong, please check the format and try again.\n"
-                        + "Format: \"Train route\" \"Departure\" \"Capacity\" \"Price\"");
+            catch (Exception e) {
+                if (!check) System.out.println(e.getMessage());
+                else System.out.println("Something went wrong, please check the format and try again.\n"
+                        + "Format: \"Train route\" \"yyyy-MM-dd HH:mm\" \"Capacity\" \"Price\"");
             }
         }
         else if (cl.hasOption(editTrain.getOpt())) {
+            boolean check = true;
             try {
                 TrainManager trainManager = new TrainManager();
                 List<Train> trains = trainManager.getAll();
@@ -103,6 +107,7 @@ public class App {
                 }
                 if (!ids.contains(Integer.parseInt(cl.getArgList().get(0)))) System.out.println("Train route with the given id does not exist!");
                 else if (trainManager.checkTrainRoute(cl.getArgList().get(1))) {
+                    check = true;
                     Train train = new Train();
                     train.setId(Integer.parseInt(cl.getArgList().get(0)));
                     train.setRoute(cl.getArgList().get(1));
@@ -114,9 +119,10 @@ public class App {
                     System.out.println("You have been successfully edited a train route!");
                 }
             }
-            catch (TrainException e) {
-                System.out.println("Something went wrong, please check the format and try again.\n"
-                        + "Format: \"ID\" \"Train route\" \"Departure\" \"Capacity\" \"Price\"");
+            catch (Exception e) {
+                if (!check) System.out.println(e.getMessage());
+                else System.out.println("Something went wrong, please check the format and try again.\n"
+                        + "Format: \"ID\" \"Train route\" \"yyyy-MM-dd HH:mm\" \"Capacity\" \"Price\"");
             }
         }
         else if (cl.hasOption(deleteTrain.getOpt())) {
@@ -133,7 +139,7 @@ public class App {
                     System.out.println("You have been successfully deleted a train route!");
                 }
             }
-            catch (TrainException e) {
+            catch (Exception e) {
                 System.out.println("Something went wrong, please check the format and try again."
                         + "Format: \"ID\"");
             }
