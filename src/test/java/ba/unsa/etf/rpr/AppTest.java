@@ -1,21 +1,30 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.business.TrainManager;
+import ba.unsa.etf.rpr.business.UserManager;
 import ba.unsa.etf.rpr.controllers.Model;
 import ba.unsa.etf.rpr.dao.TrainDaoSQLImpl;
+import ba.unsa.etf.rpr.dao.UserDao;
 import ba.unsa.etf.rpr.domain.Reservation;
 import ba.unsa.etf.rpr.domain.Train;
 import ba.unsa.etf.rpr.domain.User;
 import ba.unsa.etf.rpr.exceptions.TrainException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
 /**
- * Unit tests for simple App.
+ * Tests for my simple App.
  * @author Tajra Selimovic
  */
 public class AppTest {
+    /**
+     * Tests if 'checkTrainRoute' method is valid
+     */
     @Test
     public void checkTrainRouteTest1() {
         try {
@@ -27,6 +36,9 @@ public class AppTest {
         }
     }
 
+    /**
+     * Tests if 'checkTrainRoute' method is valid
+     */
     @Test
     public void checkTrainRouteTest2() {
         try {
@@ -37,6 +49,9 @@ public class AppTest {
         }
     }
 
+    /**
+     * Tests if 'validateBookFields' method is valid
+     */
     @Test
     public void validateBookFieldsTest1() {
         try {
@@ -49,6 +64,9 @@ public class AppTest {
         }
     }
 
+    /**
+     * Tests if 'validateBookFields' method is valid
+     */
     @Test
     public void validateBookFieldsTest2() {
         try {
@@ -60,6 +78,9 @@ public class AppTest {
         }
     }
 
+    /**
+     * Tests if 'validateAddFields' method is valid
+     */
     @Test
     public void validateAddFields1() {
         try {
@@ -72,6 +93,9 @@ public class AppTest {
         }
     }
 
+    /**
+     * Tests if 'validateAddFields' method is valid
+     */
     @Test
     public void validateAddFields2() {
         try {
@@ -83,6 +107,9 @@ public class AppTest {
         }
     }
 
+    /**
+     * Tests if setters and getters in 'Train' are valid
+     */
     @Test
     public void setAndGetTrain() {
         Model model = Model.getInstance();
@@ -91,6 +118,9 @@ public class AppTest {
         assertSame(train, model.getTrain());
     }
 
+    /**
+     * Tests if setters and getters in 'User' are valid
+     */
     @Test
     public void setAndGetUser() {
         Model model = Model.getInstance();
@@ -105,5 +135,35 @@ public class AppTest {
         Reservation reservation = new Reservation();
         model.setReservation(reservation);
         assertSame(reservation, model.getReservation());
+    }
+
+    private UserManager userManager;
+    @Mock
+    private UserDao userDao;
+
+    public User user = new User();
+
+    @BeforeEach
+    public void setUp() {
+        user.setId(1);
+        user.setUsername("user1");
+        user.setRole(false);
+        user.setName("User");
+        user.setPassword("us123");
+        MockitoAnnotations.openMocks(this);
+        userManager = new UserManager();
+    }
+
+
+    @Test
+    public void addTest() throws TrainException {
+        userDao.add(user);
+        verify(userDao).add(user);
+    }
+
+    @Test
+    void deleteTest() throws Exception {
+        userDao.delete(1);
+        verify(userDao).delete(1);
     }
 }
