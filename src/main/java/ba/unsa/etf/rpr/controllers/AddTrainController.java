@@ -68,13 +68,15 @@ public class AddTrainController {
             LocalDate localDate = date.getValue();
             LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
             Train train = new Train();
-            train.setRoute(routeText.getText());
-            train.setCapacity(100);
-            train.setDeparture(localDateTime);
-            train.setPrice(priceBox.getValue());
-            trainManager.add(train);
-            message1.setText("");
-            message2.setText("You have been successfully added train route!");
+            if (trainManager.checkTrainRoute(routeText.getText())) {
+                train.setRoute(routeText.getText());
+                train.setCapacity(100);
+                train.setDeparture(localDateTime);
+                train.setPrice(priceBox.getValue());
+                trainManager.add(train);
+                message1.setText("");
+                message2.setText("You have been successfully added train route!");
+            }
         }
         catch(Exception e) {
             message1.setText(e.getMessage());
