@@ -26,7 +26,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="menuLink" layoutX="71.0" layoutY="187.0" onAction="#menuLinkOnAction" prefHeight="27.0" prefWidth="48.0" text="Menu">
+            <Hyperlink fx:id="menuLink" layoutX="71.0" layoutY="187.0" onAction="#menuLinkOnAction" prefHeight="27.0" prefWidth="57.0" text="Menu">
                <font>
                   <Font size="15.0" />
                </font>
@@ -77,7 +77,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Label layoutX="219.0" layoutY="38.0" prefHeight="38.0" prefWidth="140.0" text="WELLCOME," textFill="#ac0a0a">
+      <Label layoutX="219.0" layoutY="38.0" prefHeight="38.0" prefWidth="140.0" text="WELCOME," textFill="#ac0a0a">
          <font>
             <Font size="25.0" />
          </font>
@@ -101,7 +101,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="664.0" layoutY="117.0" prefHeight="108.0" prefWidth="202.0" style="-fx-background-color: #e37332;">
+      <Pane layoutX="665.0" layoutY="117.0" prefHeight="108.0" prefWidth="202.0" style="-fx-background-color: #e37332;">
          <children>
             <ImageView fitHeight="41.0" fitWidth="40.0" layoutX="14.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -113,7 +113,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label layoutX="148.0" layoutY="20.0" text="\$5M" textFill="WHITE">
+            <Label layoutX="101.0" layoutY="20.0" text="\$">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="profitLabel" layoutX="121.0" layoutY="20.0" prefHeight="31.0" prefWidth="82.0">
                <font>
                   <Font size="21.0" />
                </font>
@@ -132,7 +137,7 @@
             <Image url="@../Images/logoT.png" />
          </image>
       </ImageView>
-      <Label fx:id="adminLabel" layoutX="359.0" layoutY="38.0" prefHeight="38.0" prefWidth="263.0" textFill="#ac0a0a">
+      <Label fx:id="adminLabel" layoutX="348.0" layoutY="38.0" prefHeight="38.0" prefWidth="263.0" textFill="#ac0a0a">
          <font>
             <Font size="25.0" />
          </font>

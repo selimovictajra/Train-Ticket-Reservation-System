@@ -28,7 +28,7 @@
                   <Font size="15.0" />
                </font>
             </Hyperlink>
-            <ImageView fitHeight="19.0" fitWidth="32.0" layoutX="819.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="19.0" fitWidth="32.0" layoutX="812.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/logout.png" />
                </image>
@@ -43,7 +43,10 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="840.0" layoutY="15.0" onAction="#logoutLinkOnAction" text="Logout" />
+            <Hyperlink layoutX="832.0" layoutY="13.0" onAction="#logoutLinkOnAction" text="Logout">
+               <font>
+                  <Font size="15.0" />
+               </font></Hyperlink>
             <Label fx:id="userLabel" layoutX="13.0" layoutY="44.0" prefHeight="27.0" prefWidth="172.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />

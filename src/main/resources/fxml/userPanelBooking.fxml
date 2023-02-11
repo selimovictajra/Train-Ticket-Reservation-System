@@ -34,8 +34,11 @@
                </image>
             </ImageView>
             <Label layoutX="22.0" layoutY="15.0" text="Active" textFill="WHITE" />
-            <Hyperlink layoutX="840.0" layoutY="15.0" onAction="#logoutLinkOnAction" text="Logout" />
-            <ImageView fitHeight="19.0" fitWidth="32.0" layoutX="819.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <Hyperlink layoutX="832.0" layoutY="13.0" onAction="#logoutLinkOnAction" text="Logout">
+               <font>
+                  <Font size="15.0" />
+               </font></Hyperlink>
+            <ImageView fitHeight="19.0" fitWidth="32.0" layoutX="812.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/logout.png" />
                </image>
@@ -47,12 +50,12 @@
             <Image url="@../Images/train2.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="40.0" layoutY="124.0" prefHeight="27.0" prefWidth="105.0" text="WELLCOME, " textFill="#ac0a0a">
+      <Label layoutX="40.0" layoutY="124.0" prefHeight="27.0" prefWidth="105.0" text="WELCOME, " textFill="#ac0a0a">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="userLabel" layoutX="145.0" layoutY="124.0" prefHeight="27.0" prefWidth="316.0" textFill="#ac0a0a">
+      <Label fx:id="userLabel" layoutX="137.0" layoutY="124.0" prefHeight="27.0" prefWidth="316.0" textFill="#ac0a0a">
          <font>
             <Font size="18.0" />
          </font>
