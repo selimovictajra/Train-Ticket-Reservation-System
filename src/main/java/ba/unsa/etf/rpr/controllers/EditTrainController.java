@@ -96,15 +96,17 @@ public class EditTrainController {
             trainManager.validateAddFields(routeText.getText(), date.toString(), hourBox.getValue(), minBox.getValue(), priceBox.getValue());
             LocalDate localDate = date.getValue();
             LocalDateTime localDateTime = localDate.atTime(hourBox.getValue(), minBox.getValue());
-            Train train = new Train();
-            train.setId(routeBox.getValue());
-            train.setCapacity(100);
-            train.setRoute(routeText.getText());
-            train.setDeparture(localDateTime);
-            train.setPrice(priceBox.getValue());
-            trainManager.update(train);
-            message1.setText("");
-            message2.setText("You have been successfully edited train route with id " + routeBox.getValue() + "!");
+            if (trainManager.checkTrainRoute(routeText.getText())) {
+                Train train = new Train();
+                train.setId(routeBox.getValue());
+                train.setCapacity(100);
+                train.setRoute(routeText.getText());
+                train.setDeparture(localDateTime);
+                train.setPrice(priceBox.getValue());
+                trainManager.update(train);
+                message1.setText("");
+                message2.setText("You have been successfully edited train route with id " + routeBox.getValue() + "!");
+            }
         }
         catch (Exception e) {
             message1.setText(e.getMessage());
