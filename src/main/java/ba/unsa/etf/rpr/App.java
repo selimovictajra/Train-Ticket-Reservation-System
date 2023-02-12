@@ -14,13 +14,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Tajra Selimovic
  * CLI (Command Line Interface) implementation in following class
  * Even though this type of presentation layer (called CLI) is becoming past tense for GUI apps
  * it's good to see how you can manipulate data through command line and database also
- *
+ * @author Tajra Selimovic
  */
 public class App {
+    /**
+     * Default constructor
+     */
+    public App() {}
     /**
      * Defining final variables to describe all code having options
      */
