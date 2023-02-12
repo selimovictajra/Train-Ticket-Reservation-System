@@ -15,6 +15,10 @@ import java.util.Objects;
  */
 public class AppFX extends Application {
     /**
+     * Default constructor
+     */
+    public AppFX() {}
+    /**
      * The `start` method is called when the Application is launched.
      * @param primaryStage The primary Stage of the Application.
      * @throws Exception if the FXML file cannot be loaded.
