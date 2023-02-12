@@ -9,6 +9,7 @@ import java.util.*;
 /**
  * Abstract class that implements core DAO CRUD methods for every entity
  * @author Tajra Selimovic
+ * @param <T> A generic type parameter that extends the Idable interface. This represents the entity
  */
 public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     private static Connection connection;
@@ -42,6 +43,10 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
         }
     }
 
+    /**
+     * Returns the database connection.
+     * @return the database connection
+     */
     public static Connection getConnection() {
         return AbstractDao.connection;
     }
@@ -64,6 +69,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * get entity from database base on ID
      * @param id primary key of entity
      * @return Entity from database
+     * @throws TrainException in case of problems
      */
     public T getById(int id) throws TrainException {
         return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
@@ -71,6 +77,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     /**
      * Lists all entities from database. WARNING: Very slow operation because it reads all records.
      * @return List of entities from database
+     * @throws TrainException in case of problems
      */
     public List<T> getAll() throws TrainException {
         return executeQuery("SELECT * FROM "+ tableName, null);
@@ -78,6 +85,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     /**
      * Hard delete of item from database with given id
      * @param id - primary key of entity
+     * @throws TrainException in case of problems
      */
     public void delete(int id) throws TrainException {
         String sql = "DELETE FROM "+tableName+" WHERE id = ?";
@@ -93,6 +101,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * Fully updates entity in database based on id (primary) match.
      * @param item - bean to be updated. id must be populated
      * @return updated version of bean
+     * @throws TrainException in case of problems
      */
     public T add(T item) throws TrainException{
         Map<String, Object> row = object2row(item);
@@ -127,6 +136,7 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * Fully updates entity in database based on id (primary) match.
      * @param item - bean to be updated. id must be populated
      * @return updated version of bean
+     * @throws TrainException in case of problems
      */
     public T update(T item) throws TrainException{
         Map<String, Object> row = object2row(item);
