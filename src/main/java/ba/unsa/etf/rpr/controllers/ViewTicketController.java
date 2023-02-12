@@ -12,24 +12,54 @@ import javafx.scene.control.Label;
  * @author Tajra Selimovic
  */
 public class ViewTicketController {
+    /**
+     * Train id of reservation
+     */
     @FXML
     public Label trainIdLabel;
+    /**
+     * Departure of reservation
+     */
     @FXML
     public Label departureLabel;
+    /**
+     * Passenger name
+     */
     @FXML
     public Label passengerNameLabel;
+    /**
+     * Passenger name
+     */
     @FXML
     public Label passengerNameLabel1;
+    /**
+     * Route of reservation
+     */
     @FXML
     public Label routeLabel;
+    /**
+     * Route of reservation
+     */
     @FXML
     public Label routeLabel1;
+    /**
+     * Label for displaying the date.
+     */
     @FXML
     public Label dateLabel;
+    /**
+     * Label for displaying the date.
+     */
     @FXML
     public Label dateLabel1;
+    /**
+     * Label for displaying id of reservation
+     */
     @FXML
     public Label ticketLabel;
+    /**
+     * Label for displaying id of reservation
+     */
     @FXML
     public Label ticketLabel1;
 
