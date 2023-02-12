@@ -25,6 +25,10 @@ import java.util.Objects;
  * @author Tajra Selimovic
  */
 public class EditTrainController {
+    /**
+     * Default constructor
+     */
+    public EditTrainController() {}
     @FXML
     private ChoiceBox<Integer> routeBox;
     @FXML
@@ -118,6 +122,7 @@ public class EditTrainController {
      * Switches the user to the home window.
      * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
      * @param actionEvent the event that triggers the action
+     * @throws TrainException in case of problems
      */
     public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
@@ -137,6 +142,7 @@ public class EditTrainController {
      * Switches the user to the menu window.
      * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
      * @param actionEvent the event that triggers the action
+     * @throws TrainException in case of problems
      */
     public void menuLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
@@ -156,6 +162,7 @@ public class EditTrainController {
      * Switches the user to the delete Train window.
      * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
      * @param actionEvent the event that triggers the action
+     * @throws TrainException in case of problems
      */
     public void deleteTrainLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
@@ -175,6 +182,7 @@ public class EditTrainController {
      * Switches the user to the add Train window.
      * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
      * @param actionEvent the event that triggers the action
+     * @throws TrainException in case of problems
      */
     public void addTrainLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
@@ -194,6 +202,7 @@ public class EditTrainController {
      * Switches the user to the login window.
      * If any exception is thrown during the execution, it will be caught and the error message will be printed to the console.
      * @param actionEvent the event that triggers the action
+     * @throws TrainException in case of problems
      */
     public void logoutLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
