@@ -13,6 +13,7 @@ public interface TrainDao extends Dao<Train> {
     * Checks if the given train route is valid.
     * @param route The train route to be checked.
     * @return true if the route is valid, false otherwise.
+    * @throws TrainException in case of problems
     */
     boolean checkTrainRoute(String route) throws TrainException;
 }
