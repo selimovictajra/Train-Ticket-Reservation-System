@@ -30,18 +30,41 @@ import java.util.Objects;
  * @author Tajra Selimovic
  */
 public class UserYBController {
+    /**
+     * Default constructor
+     */
+    public UserYBController() {}
     @FXML
     Pane YBPane;
+
+    /**
+     * Object used to display the list of trains for which the user has made a reservation.
+     */
     @FXML
     public TableView<Train> bookingTable;
+    /**
+     * Object used to display the route of the train in the table.
+     */
     @FXML
     public TableColumn<Train, String> routeColumn;
+    /**
+     * Object used to display the departure of the train in the table.
+     */
     @FXML
     public TableColumn<Train, LocalDateTime> departureColumn;
+    /**
+     * Object used to display the price of the train in the table.
+     */
     @FXML
     public TableColumn<Train, Integer> priceColumn;
+    /**
+     * Button 'View' which will show the user their ticket
+     */
     @FXML
     public TableColumn<Train, Integer> ticketColumn;
+    /**
+     * Name of user
+     */
     @FXML
     private Label userLabel;
     private final TrainManager trainManager = new TrainManager();
