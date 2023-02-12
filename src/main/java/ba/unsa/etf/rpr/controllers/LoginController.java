@@ -24,6 +24,10 @@ import java.util.Objects;
  */
 public class LoginController {
     /**
+     * Default constructor
+     */
+    public LoginController() {}
+    /**
      * A button for canceling the login process.
      */
     @FXML
