@@ -21,6 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The class UserBookingController is used for creating the user interface for booking a train reservation.
+ * This class uses the JavaFX framework for the creation of the user interface and implements the logic for reserving a train.
+ * @author Tajra Selimovic
+ * @version 1.0
+ */
 public class UserBookingController {
     @FXML
     private ChoiceBox<String> routeBox;
@@ -42,6 +48,15 @@ public class UserBookingController {
     TrainManager trainManager = new TrainManager();
     ReservationManager reservationManager = new ReservationManager();
 
+    /**
+     * Default constructor
+     */
+    public UserBookingController() {}
+
+    /**
+     * The initialize method is used to set up the user interface when the window is opened.
+     * This method sets the user's name in the userLabel, validates the booking fields using the trainManager, and sets up the route, date, and time ChoiceBoxes.
+     */
     public void initialize() {
         try {
             Model model = Model.getInstance();
@@ -112,7 +127,13 @@ public class UserBookingController {
             System.out.println(e.getMessage());
         }
     }
-
+    /**
+     * Handles the action performed when the "Book" button is clicked.
+     * Validates the input fields, creates a reservation object, and adds it to the reservation manager.
+     * Also sets the reservation in the model, and updates the messages and price label.
+     * @param actionEvent the event generated when the button is clicked
+     * @throws TrainException if the input fields are invalid
+     */
     public void bookButtonOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             reservationManager.validateBookFields(routeBox.toString(), dateBox.getValue(), timeBox.getValue());
@@ -147,7 +168,11 @@ public class UserBookingController {
             priceLabel.setText("");
         }
     }
-
+    /**
+     * The method is used to logout the current user. It loads the login screen when the logout button is clicked.
+     * @param actionEvent The event that is generated when the logout button is clicked.
+     * @throws TrainException If any exception occurs during the logout process.
+     */
     public void logoutLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
@@ -161,6 +186,12 @@ public class UserBookingController {
             e.getCause();
         }
     }
+    /**
+     * Handles the action event for the "Home" link in the user panel.
+     * This method changes the current scene to the user panel home screen.
+     * @param actionEvent The action event triggered by the user clicking the "Home" link.
+     * @throws TrainException if there is an error loading the user panel home screen.
+     */
     public void homeLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelHome.fxml")));
@@ -174,6 +205,12 @@ public class UserBookingController {
             e.getCause();
         }
     }
+    /**
+     * Handles the action event for the "Your Bookings" link in the user panel.
+     * This method changes the current scene to the user panel your bookings screen.
+     * @param actionEvent The action event triggered by the user clicking the "Your Bookings" link.
+     * @throws TrainException if there is an error loading the user panel home screen.
+     */
     public void bookingsLinkOnAction(javafx.event.ActionEvent actionEvent) throws TrainException {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/userPanelYourBookings.fxml")));
