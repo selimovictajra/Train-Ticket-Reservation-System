@@ -27,6 +27,11 @@ import java.util.Objects;
  */
 
 public class AddTrainController {
+
+    /**
+     * The default constructor for the AddTrainController class.
+     */
+    public AddTrainController() {}
     @FXML
     private TextField routeText;
     @FXML
@@ -42,9 +47,9 @@ public class AddTrainController {
     @FXML
     private Label message2;
     TrainManager trainManager = new TrainManager();
-    private Integer[] hour = {5, 6, 7, 8, 9, 10};
-    private Integer[] min = {0, 10, 20, 30, 40, 50};
-    private Integer[] prices = {10, 15, 20, 25, 30};
+    private final Integer[] hour = {5, 6, 7, 8, 9, 10};
+    private final Integer[] min = {0, 10, 20, 30, 40, 50};
+    private final Integer[] prices = {10, 15, 20, 25, 30};
 
     /**
      * Sets up the available options for the user to select from when entering the train's departure time and price.
