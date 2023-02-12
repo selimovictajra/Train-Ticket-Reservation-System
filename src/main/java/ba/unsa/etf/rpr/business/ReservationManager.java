@@ -15,6 +15,10 @@ import java.util.List;
  */
 public class ReservationManager {
     /**
+     * Default constructor
+     */
+    public ReservationManager() {}
+    /**
      * Deletes reservation from database table Reservations
      * @param id int
      * @throws TrainException in case of problem with database
