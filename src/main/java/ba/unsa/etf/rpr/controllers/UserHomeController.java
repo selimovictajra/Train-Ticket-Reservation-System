@@ -20,6 +20,10 @@ public class UserHomeController {
     @FXML
     private Label userLabel;
     /**
+     * Default constructor
+     */
+    public UserHomeController() {}
+    /**
      * Initializes the user's name on the home screen by getting the current user from the Model class.
      */
     public void initialize() {
