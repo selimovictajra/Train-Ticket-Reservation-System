@@ -43,7 +43,7 @@ public class TrainDaoSQLImpl extends AbstractDao<Train> implements TrainDao{
     /**
      * Takes in a Train object and converts it into a Map of String keys and Object values.
      * @param object - a bean object for specific table
-     * @return A Map<String, Object> containing the fields of the Train object as key-value pairs.
+     * @return A Map containing the fields of the Train object as key-value pairs.
      */
     @Override
     public Map<String, Object> object2row(Train object) {
