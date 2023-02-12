@@ -22,6 +22,10 @@ import java.util.Objects;
  * @author Tajra Selimovic
  */
 public class DeleteTrainController {
+    /**
+     * Default constructor
+     */
+    public DeleteTrainController() {}
     @FXML
     private ChoiceBox<Integer> trainRoutes;
     @FXML
