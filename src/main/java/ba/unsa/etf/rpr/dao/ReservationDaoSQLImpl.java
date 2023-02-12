@@ -40,7 +40,7 @@ public class ReservationDaoSQLImpl extends AbstractDao<Reservation> implements R
     /**
      * Takes in a Reservation object and converts it into a Map of String keys and Object values.
      * @param object - a bean object for specific table
-     * @return A Map<String, Object> containing the fields of the Reservation object as key-value pairs.
+     * @return A Map containing the fields of the Reservation object as key-value pairs.
      */
     @Override
     public Map<String, Object> object2row(Reservation object) {
