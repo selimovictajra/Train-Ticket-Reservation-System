@@ -19,12 +19,27 @@ import java.util.Objects;
  */
 
 public class AdminPanelHomeController {
+    /**
+     * Default constructor for AdminPanelHomeController class.
+     */
+    public AdminPanelHomeController() {}
     UserManager userManager = new UserManager();
     ReservationManager reservationManager = new ReservationManager();
+    /**
+     * The label for displaying the number of users.
+     */
     @FXML
     public javafx.scene.control.Label usersLabel;
+
+    /**
+     * The label for displaying the name of administrator.
+     */
     @FXML
     public javafx.scene.control.Label adminLabel;
+
+    /**
+     * The label for displaying the profit.
+     */
     @FXML
     public javafx.scene.control.Label profitLabel;
 
