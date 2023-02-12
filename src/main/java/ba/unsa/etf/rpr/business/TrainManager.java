@@ -12,6 +12,10 @@ import java.util.List;
  */
 public class TrainManager {
     /**
+     * Default constructor
+     */
+    public TrainManager() {}
+    /**
      * Updates train in database table Trains
      * @param cat Train
      * @return Train
@@ -45,12 +49,27 @@ public class TrainManager {
         return DaoFactory.trainDao().getAll();
     }
 
+    /**
+     * Validates the fields for adding a train.
+     * @param route The route of the train.
+     * @param datetime The datetime of the train's departure.
+     * @param min The minutes of the train's departure time.
+     * @param hour The hours of the train's departure time.
+     * @param price The price of a ticket for the train.
+     * @throws TrainException If any of the fields are empty.
+     */
     public void validateAddFields(String route, String datetime, Integer min, Integer hour, Integer price) throws TrainException {
         if(route.isEmpty() || datetime.isEmpty() || min == null || hour == null || price == null) {
             throw new TrainException("All fields must be filled in!");
         }
     }
-
+    /**
+     * Validates the fields for booking a train.
+     * @param route The route of the train to be booked.
+     * @param date The date of the train to be booked.
+     * @param time The time of the train to be booked.
+     * @throws TrainException If any of the fields are empty.
+     */
     public void validateBookFields(String route, String date, String time) throws TrainException {
         if(route.isEmpty() || date.isEmpty() || time.isEmpty()) {
             throw new TrainException("All fields must be filled in!");
@@ -108,6 +127,7 @@ public class TrainManager {
      * Checks if the given train route is valid.
      * @param route The train route to be checked.
      * @return true if the route is valid, false otherwise.
+     * @throws TrainException in case of problems
      */
     public boolean checkTrainRoute(String route) throws TrainException {
         return DaoFactory.trainDao().checkTrainRoute(route);
