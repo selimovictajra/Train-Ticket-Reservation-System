@@ -13,6 +13,10 @@ import java.util.List;
 
 public class UserManager {
     /**
+     * Default constructor
+     */
+    public UserManager() {}
+    /**
      * Deletes user from database table Users
      * @param id int
      * @throws TrainException in case of problem with database
