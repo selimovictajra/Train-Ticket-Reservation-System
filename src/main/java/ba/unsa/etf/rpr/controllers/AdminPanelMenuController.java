@@ -28,43 +28,107 @@ import java.util.Objects;
  */
 
 public class AdminPanelMenuController {
+    /**
+     * Default constructor.
+     */
+    public AdminPanelMenuController() {}
     private final TrainManager trainManager = new TrainManager();
     private final UserManager userManager = new UserManager();
     private final ReservationManager reservationManager = new ReservationManager();
 
+    /**
+     * The main container for the administrator's view.
+     */
     @FXML
     BorderPane adminPane;
 
+    /**
+     * The TableView that displays the information about trains.
+     */
     @FXML
     public TableView<Train> trainTable;
+
+    /**
+     * The TableColumn that displays the ID of the trains.
+     */
     @FXML
     public TableColumn<Train, String> trainIdColumn;
+
+    /**
+     * The TableColumn that displays the routes of the trains.
+     */
     @FXML
     public TableColumn<Train, String> routeColumn;
+
+    /**
+     * The TableColumn that displays the departure dates of the trains.
+     */
     @FXML
     public TableColumn<Train, LocalDate> departureColumn;
+
+    /**
+     * The TableColumn that displays the capacities of the trains.
+     */
     @FXML
     public TableColumn<Train, String> capacityColumn;
+
+    /**
+     * The TableColumn that displays the prices of the trains.
+     */
     @FXML
     public TableColumn<Train, String> priceColumn;
 
+    /**
+     * The TableView that displays the information about users.
+     */
     @FXML
     public TableView<User> usersTable;
+
+    /**
+     * The TableColumn that displays the ID of the users.
+     */
     @FXML
     public TableColumn<User, String> userIdColumn;
+
+    /**
+     * The TableColumn that displays the names of the users.
+     */
     @FXML
     public TableColumn<User, String> nameColumn;
+
+    /**
+     * The TableColumn that displays the usernames of the users.
+     */
     @FXML
     public TableColumn<User, String> usernameColumn;
+
+    /**
+     * The TableColumn that displays the passwords of the users.
+     */
     @FXML
     public TableColumn<User, String> passwordColumn;
 
+    /**
+     * The TableView that displays the information about reservations.
+     */
     @FXML
     public TableView<Reservation> reservationTable;
+
+    /**
+     * The TableColumn that displays the ID of the reservations.
+     */
     @FXML
     public TableColumn<Reservation, String> ridColumn;
+
+    /**
+     * The TableColumn that displays the trains of the reservations.
+     */
     @FXML
     public TableColumn<Reservation, String> trainColumn;
+
+    /**
+     * The TableColumn that displays the users of the reservations.
+     */
     @FXML
     public TableColumn<Reservation, String> userColumn;
 
