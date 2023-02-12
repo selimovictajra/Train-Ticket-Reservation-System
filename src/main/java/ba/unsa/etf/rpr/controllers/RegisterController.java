@@ -22,6 +22,10 @@ import java.util.Objects;
  * @author Tajra Selimovic
  */
 public class RegisterController {
+    /**
+     * Default constructor
+     */
+    public RegisterController() {}
     private final UserManager userManager = new UserManager();
     @FXML
     private Button closeButton;
